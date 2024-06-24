@@ -1,0 +1,34 @@
+#---------------------------------------------------#
+#
+# Blimp Script for Moderated Regression Model
+# 
+#---------------------------------------------------#
+
+# Read in and set up data
+DATA: pain.dat;            # Read Data in
+VARIABLES:                 # List Variable Names
+    id txgrp male age edugroup workhrs
+    exercise pain severity anxiety stress
+    control depress interfere disab 
+    dep1:dep7 interf1:interf6 disab1:disab6;
+ORDINAL: severity male;    # Specify Binary Variables
+MISSING: 999;              # Missing data code
+
+FIXED:  male;              # Specify variables with no missing
+CENTER: depress;           # Center variables
+# Specify Regression Model
+MODEL: 
+    focal:
+    	disab ~ depress male depress*male;
+
+    predictor:
+	    depress ~ male;
+
+# Conditional Effects Analysis
+SIMPLE: depress | male;
+
+# Specify the MCMC sampler
+SEED: 19723;               # Set a prng seed
+BURN: 5000;                # Set number of burn iterations
+ITERATIONS: 10000;         # Set number of analysis iterations
+CHAINS: 4;                 # Specify number independent of chains

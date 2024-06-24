@@ -1,0 +1,31 @@
+#---------------------------------------------------#
+#
+# Blimp Script for Regression Model with Missing Data
+# 
+#---------------------------------------------------#
+
+DATA: pain.dat;            # Read Data in
+VARIABLES:                 # List Variable Names
+    id txgrp male age edugroup workhrs
+    exercise pain severity anxiety stress
+    control depress interfere disab 
+    dep1:dep7 interf1:interf6 disab1:disab6;
+MISSING: 999;              # Missing data code
+
+# Specify Regression Model
+MODEL: 
+	# Label coefficients with `@`
+    focal:     disab ~ depress@b1 control@b2 male@b3;
+    predictor: depress ~ control male;
+    
+# Perform Wald Tests: 4 total tests
+TEST: b1 = 0; # Test of a single slope
+TEST: b2 = 0; # test of a single slope
+TEST: b3 = 0; # Test of a single slope
+TEST: b1:b3 = 0; # Ominbus test of all 3 coefficients
+
+# Specify the MCMC sampler
+SEED: 19723;               # Set a prng seed
+BURN: 2500;                # Set number of burn iterations
+ITERATIONS: 10000;         # Set number of analysis iterations
+CHAINS: 4;                 # Specify number independent of chains

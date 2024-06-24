@@ -1,0 +1,581 @@
+
+---------------------------------------------------------------------------
+
+                                   Blimp
+                                  3.2.10
+
+             Blimp was developed with funding from Institute of
+           Education Sciences awards R305D150056 and R305D190002.
+
+            Craig K. Enders, P.I. Email: cenders@psych.ucla.edu
+           Brian T. Keller, Co-P.I. Email: btkeller@missouri.edu
+                 Han Du, Co-P.I. Email: hdu@psych.ucla.edu
+                 Roy Levy, Co-P.I. Email: roy.levy@asu.edu
+
+              Programming and Blimp Studio by Brian T. Keller
+
+                   There is no expressed license given.
+
+---------------------------------------------------------------------------
+
+
+ALGORITHMIC OPTIONS SPECIFIED:
+
+  Imputation method:                 Fully Bayesian model-based
+  MCMC algorithm:                    Full conditional Metropolis sampler with
+                                       Auto-Derived Conditional Distributions
+  Between-cluster imputation model:  Not applicable, single-level imputation
+  Prior for random effect variances: Not applicable, single-level imputation
+  Prior for residual variances:      Zero sum of squares, df = -2 (PRIOR2)
+  Prior for predictor variances:     Unit sum of squares, df = 2 (XPRIOR1)
+  Chain Starting Values:             Random starting values
+
+
+  NOTE: The default prior for regression coefficients 
+        in categorical models is 'normal( 0.0, 5.0)'
+
+
+BURN-IN POTENTIAL SCALE REDUCTION (PSR) OUTPUT:
+
+  NOTE: Split chain PSR is being used. This splits each chain's
+        iterations to create twice as many chains.
+
+  Comparing iterations across 4 chains     Highest PSR   Parameter #  
+                          126 to 250             1.182           105  
+                          251 to 500             1.060           109  
+                          376 to 750             1.047           107  
+                          501 to 1000            1.032           109  
+                          626 to 1250            1.022           109  
+                          751 to 1500            1.023           107  
+                          876 to 1750            1.015           107  
+                         1001 to 2000            1.014           111  
+                         1126 to 2250            1.016           109  
+                         1251 to 2500            1.010           103  
+                         1376 to 2750            1.007           107  
+                         1501 to 3000            1.011           107  
+                         1626 to 3250            1.009           109  
+                         1751 to 3500            1.008           109  
+                         1876 to 3750            1.009           111  
+                         2001 to 4000            1.007           111  
+                         2126 to 4250            1.006           107  
+                         2251 to 4500            1.006           109  
+                         2376 to 4750            1.007           111  
+                         2501 to 5000            1.008           107  
+
+
+METROPOLIS-HASTINGS ACCEPTANCE RATES:
+
+  Chain 1:
+
+    Variable                            Type    Probability   Target Value 
+    dep1                           parameter          0.484          0.500 
+    dep2                           parameter          0.512          0.500 
+    dep3                           parameter          0.478          0.500 
+    dep4                           parameter          0.454          0.500 
+    dep5                           parameter          0.527          0.500 
+    dep6                           parameter          0.513          0.500 
+    dep7                           parameter          0.445          0.500 
+
+  NOTE: Suppressing printing of 3 chains.
+        Use keyword 'tuneinfo' in options to override.
+
+
+DATA INFORMATION:
+
+  Sample Size:              275
+  Missing Data Rates:
+
+                    disab = 09.09
+                     dep1 = 04.73
+                     dep2 = 02.18
+                     dep3 = 01.82
+                     dep4 = 01.45
+                     dep5 = 02.18
+                     dep6 = 04.00
+                     dep7 = 02.91
+
+
+
+MODEL INFORMATION:
+
+  NUMBER OF PARAMETERS
+    Outcome Models:         47
+    Generated Parameters:   4
+    Predictor Models:       14
+
+  PREDICTORS
+    Fixed variables:        male
+
+  CENTERED PREDICTORS
+    Grand Mean Centered:    dep1 dep2 dep3 dep4 dep5 dep6 dep7
+
+  DEFINED VARIABLES
+    [1]  dep = dep1+dep2+dep3+dep4+dep5+dep6+dep7 
+
+  MODELS
+
+   focal:
+    [1]  disab ~ Intercept@b0 male@b2 dep@b1 dep*male@b3
+
+   predictor:
+    [2]  dep1 ~ Intercept dep2 dep3 dep4 dep5 dep6 dep7 male
+    [3]  dep2 ~ Intercept dep3 dep4 dep5 dep6 dep7 male
+    [4]  dep3 ~ Intercept dep4 dep5 dep6 dep7 male
+    [5]  dep4 ~ Intercept dep5 dep6 dep7 male
+    [6]  dep5 ~ Intercept dep6 dep7 male
+    [7]  dep6 ~ Intercept dep7 male
+    [8]  dep7 ~ Intercept male
+
+  GENERATED PARAMETERS
+    [1]  b0_female = b0
+    [2]  b1_female = b1
+    [3]  b0_male = b0+b2
+    [4]  b1_male = b1+b3
+
+
+WARNING MESSAGES:
+
+  No warning messages.
+
+
+MODEL FIT:
+
+
+  INFORMATION CRITERIA
+
+    Marginal Likelihood
+      DIC2                  5908.391
+      WAIC                  6000.294
+
+    Conditional Likelihood
+      DIC2                  5908.391
+      WAIC                  6000.294
+
+
+CORRELATIONS AMONG RESIDUALS:
+
+  Summaries based on 10000 iterations using 4 chains.
+
+
+Correlations                         Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+
+  disab, dep1                        -0.002      0.067     -0.134      0.132      1.000   9882.292 
+  disab, dep2                         0.100      0.065     -0.031      0.226      1.001   9116.698 
+  disab, dep3                        -0.029      0.065     -0.158      0.097      1.000  10024.987 
+  disab, dep4                         0.063      0.067     -0.070      0.190      1.001   9750.861 
+  disab, dep5                        -0.034      0.068     -0.165      0.102      1.000  10204.627 
+  disab, dep6                         0.006      0.070     -0.135      0.140      1.000  10085.804 
+  disab, dep7                        -0.020      0.081     -0.174      0.141      1.000   9031.369 
+  dep1, dep2                          0.001      0.087     -0.169      0.171      1.000   9625.758 
+  dep1, dep3                         -0.001      0.087     -0.173      0.168      1.000   9845.334 
+  dep1, dep4                         -0.000      0.087     -0.167      0.172      1.000   9871.667 
+  dep1, dep5                          0.001      0.087     -0.168      0.170      1.001   9867.620 
+  dep1, dep6                         -0.000      0.088     -0.171      0.168      1.000   9935.500 
+  dep1, dep7                         -0.002      0.086     -0.167      0.171      1.000  10067.399 
+  dep2, dep3                         -0.001      0.087     -0.170      0.167      1.000  10144.927 
+  dep2, dep4                          0.000      0.087     -0.170      0.168      1.000   9931.340 
+  dep2, dep5                         -0.000      0.086     -0.168      0.168      1.000   9718.184 
+  dep2, dep6                          0.000      0.086     -0.170      0.169      1.001  10088.373 
+  dep2, dep7                         -0.001      0.086     -0.168      0.170      1.000  10078.921 
+  dep3, dep4                          0.001      0.088     -0.174      0.171      1.000  10400.120 
+  dep3, dep5                          0.002      0.087     -0.174      0.170      1.000   9782.066 
+  dep3, dep6                          0.003      0.089     -0.177      0.175      1.000  10592.388 
+  dep3, dep7                          0.000      0.087     -0.174      0.167      1.000   9658.485 
+  dep4, dep5                          0.001      0.089     -0.172      0.175      1.000  10124.841 
+  dep4, dep6                         -0.002      0.089     -0.177      0.175      1.001  10307.856 
+  dep4, dep7                         -0.000      0.087     -0.173      0.169      1.000  10364.471 
+  dep5, dep6                          0.002      0.091     -0.180      0.181      1.000  11496.358 
+  dep5, dep7                          0.000      0.087     -0.168      0.169      1.000  10096.323 
+  dep6, dep7                          0.000      0.089     -0.175      0.177      1.000  10623.646 
+
+                                -------------------------------------------------------------------
+
+
+
+OUTCOME MODEL ESTIMATES:
+
+  Summaries based on 10000 iterations using 4 chains.
+
+  focal block:
+
+Outcome Variable:  disab      
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                      17.648      1.605     14.819     21.159      1.001   7433.659 
+
+Coefficients:                   
+  Intercept                          16.115      0.920     14.346     17.908      1.001   7802.323 
+  male                                2.950      1.399      0.168      5.669      1.000   8202.500 
+  dep                                 0.412      0.060      0.294      0.528      1.001   7421.102 
+  dep*male                           -0.232      0.087     -0.404     -0.060      1.000   8348.711 
+
+Standardized Coefficients:      
+  male                                0.310      0.144      0.018      0.588      1.000   8225.067 
+  dep                                 0.546      0.070      0.398      0.673      1.001   8050.279 
+  dep*male                           -0.430      0.157     -0.729     -0.111      1.000   8380.377 
+
+Proportion Variance Explained   
+  by Coefficients                     0.191      0.042      0.112      0.278      1.001   8191.891 
+  by Residual Variation               0.809      0.042      0.722      0.888      1.001   8191.891 
+
+                                -------------------------------------------------------------------
+
+
+  predictor block:
+
+Outcome Variable:  dep1       
+
+Grand Mean Centered: dep2 dep3 dep4 dep5 dep6 dep7
+
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.453      0.041      0.380      0.541      1.000   8285.832 
+
+Coefficients:                   
+  Intercept                           2.105      0.060      1.987      2.220      1.001   3603.093 
+  dep2                                0.113      0.055      0.003      0.222      1.000   8721.609 
+  dep3                                0.211      0.069      0.073      0.348      1.000   9270.193 
+  dep4                                0.105      0.066     -0.028      0.233      1.000   8161.914 
+  dep5                                0.171      0.075      0.028      0.317      1.000   8905.385 
+  dep6                                0.143      0.072      0.004      0.287      1.000   9040.823 
+  dep7                                0.130      0.067     -0.002      0.259      1.000   8559.846 
+  male                               -0.050      0.086     -0.217      0.119      1.000   9091.756 
+
+Standardized Coefficients:      
+  dep2                                0.113      0.055      0.003      0.219      1.000   8680.322 
+  dep3                                0.221      0.072      0.077      0.362      1.000   9233.457 
+  dep4                                0.108      0.068     -0.029      0.241      1.000   8217.560 
+  dep5                                0.169      0.073      0.028      0.308      1.000   9097.324 
+  dep6                                0.148      0.075      0.004      0.294      1.000   9036.009 
+  dep7                                0.125      0.064     -0.002      0.248      1.000   8606.362 
+  male                               -0.023      0.041     -0.102      0.056      1.000   9064.318 
+
+Proportion Variance Explained   
+  by Coefficients                     0.582      0.033      0.512      0.642      1.000   9108.860 
+  by Residual Variation               0.418      0.033      0.358      0.488      1.000   9108.860 
+
+                                -------------------------------------------------------------------
+
+
+
+Outcome Variable:  dep2       
+
+Grand Mean Centered: dep3 dep4 dep5 dep6 dep7
+
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.633      0.057      0.535      0.757      1.000   8839.327 
+
+Coefficients:                   
+  Intercept                           2.555      0.070      2.417      2.691      1.002   4497.960 
+  dep3                                0.181      0.081      0.024      0.342      1.000   9325.221 
+  dep4                                0.128      0.075     -0.019      0.275      1.000   9672.638 
+  dep5                                0.166      0.086     -0.003      0.337      1.000   8877.175 
+  dep6                                0.242      0.085      0.074      0.408      1.001   8004.027 
+  dep7                               -0.003      0.080     -0.165      0.148      1.001   7810.921 
+  male                               -0.002      0.102     -0.201      0.199      1.000   9078.996 
+
+Standardized Coefficients:      
+  dep3                                0.187      0.083      0.025      0.351      1.000   9226.494 
+  dep4                                0.130      0.076     -0.019      0.279      1.000   9646.549 
+  dep5                                0.161      0.083     -0.003      0.325      1.000   8877.390 
+  dep6                                0.248      0.086      0.076      0.409      1.001   8111.105 
+  dep7                               -0.003      0.075     -0.155      0.140      1.001   7786.680 
+  male                               -0.001      0.047     -0.093      0.092      1.000   9140.220 
+
+Proportion Variance Explained   
+  by Coefficients                     0.431      0.040      0.349      0.506      1.000   9022.278 
+  by Residual Variation               0.569      0.040      0.494      0.651      1.000   9022.278 
+
+                                -------------------------------------------------------------------
+
+
+
+Outcome Variable:  dep3       
+
+Grand Mean Centered: dep4 dep5 dep6 dep7
+
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.384      0.035      0.324      0.459      1.000   8781.726 
+
+Coefficients:                   
+  Intercept                           1.941      0.059      1.826      2.055      1.003   1623.709 
+  dep4                                0.238      0.057      0.127      0.351      1.000   9131.525 
+  dep5                                0.175      0.068      0.044      0.309      1.000   8433.056 
+  dep6                                0.258      0.065      0.131      0.387      1.000   8697.612 
+  dep7                                0.295      0.059      0.182      0.413      1.001   9320.813 
+  male                                0.198      0.078      0.046      0.348      1.001   9510.431 
+
+Standardized Coefficients:      
+  dep4                                0.234      0.055      0.126      0.343      1.000   9140.911 
+  dep5                                0.163      0.062      0.041      0.284      1.000   8322.005 
+  dep6                                0.254      0.063      0.129      0.375      1.000   8727.721 
+  dep7                                0.269      0.052      0.167      0.372      1.001   9208.962 
+  male                                0.088      0.034      0.021      0.154      1.001   9517.413 
+
+Proportion Variance Explained   
+  by Coefficients                     0.682      0.026      0.626      0.729      1.000   9169.567 
+  by Residual Variation               0.318      0.026      0.271      0.374      1.000   9169.567 
+
+                                -------------------------------------------------------------------
+
+
+
+Outcome Variable:  dep4       
+
+Grand Mean Centered: dep5 dep6 dep7
+
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.463      0.042      0.391      0.554      1.001   8845.425 
+
+Coefficients:                   
+  Intercept                           2.297      0.066      2.170      2.425      1.004   2105.799 
+  dep5                                0.499      0.066      0.370      0.628      1.000   9439.982 
+  dep6                                0.210      0.071      0.072      0.348      1.000   8725.497 
+  dep7                                0.190      0.064      0.061      0.317      1.001   8605.201 
+  male                                0.044      0.084     -0.120      0.207      1.000   9373.586 
+
+Standardized Coefficients:      
+  dep5                                0.470      0.059      0.352      0.581      1.001   9364.612 
+  dep6                                0.208      0.069      0.072      0.342      1.000   8714.013 
+  dep7                                0.174      0.058      0.056      0.287      1.001   8597.576 
+  male                                0.020      0.038     -0.054      0.094      1.000   9386.806 
+
+Proportion Variance Explained   
+  by Coefficients                     0.609      0.031      0.542      0.666      1.000   8666.711 
+  by Residual Variation               0.391      0.031      0.334      0.458      1.000   8666.711 
+
+                                -------------------------------------------------------------------
+
+
+
+Outcome Variable:  dep5       
+
+Grand Mean Centered: dep6 dep7
+
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.421      0.039      0.353      0.504      1.000   8256.115 
+
+Coefficients:                   
+  Intercept                           2.111      0.065      1.981      2.236      1.002   1415.733 
+  dep6                                0.572      0.056      0.463      0.687      1.000   9654.312 
+  dep7                                0.230      0.061      0.109      0.349      1.000   9098.682 
+  male                               -0.006      0.081     -0.165      0.157      1.000   8830.721 
+
+Standardized Coefficients:      
+  dep6                                0.599      0.052      0.494      0.699      1.000   9365.597 
+  dep7                                0.223      0.058      0.106      0.335      1.000   9100.324 
+  male                               -0.003      0.039     -0.079      0.074      1.000   8821.616 
+
+Proportion Variance Explained   
+  by Coefficients                     0.603      0.033      0.533      0.663      1.000   7979.156 
+  by Residual Variation               0.397      0.033      0.337      0.467      1.000   7979.156 
+
+                                -------------------------------------------------------------------
+
+
+
+Outcome Variable:  dep6       
+
+Grand Mean Centered: dep7
+
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.572      0.054      0.479      0.688      1.001   7995.856 
+
+Coefficients:                   
+  Intercept                           1.896      0.078      1.745      2.051      1.003    959.750 
+  dep7                                0.775      0.048      0.681      0.869      1.001   9371.052 
+  male                               -0.010      0.096     -0.196      0.182      1.000   8550.187 
+
+Standardized Coefficients:      
+  dep7                                0.715      0.028      0.656      0.763      1.001   8057.102 
+  male                               -0.005      0.043     -0.089      0.083      1.000   8548.529 
+
+Proportion Variance Explained   
+  by Coefficients                     0.513      0.038      0.432      0.582      1.001   8210.662 
+  by Residual Variation               0.487      0.038      0.418      0.568      1.001   8210.662 
+
+                                -------------------------------------------------------------------
+
+
+
+Outcome Variable:  dep7       
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.003      0.089      0.847      1.199      1.001   9120.491 
+
+Coefficients:                   
+  Intercept                           1.589      0.079      1.430      1.744      1.000   9483.000 
+  male                                0.186      0.123     -0.052      0.426      1.001   9629.506 
+
+Standardized Coefficients:      
+  male                                0.090      0.059     -0.025      0.204      1.000   9627.785 
+
+Proportion Variance Explained   
+  by Coefficients                     0.008      0.012      0.000      0.042      1.001   9736.966 
+  by Residual Variation               0.992      0.012      0.958      1.000      1.001   9736.966 
+
+                                -------------------------------------------------------------------
+
+
+
+GENERATED PARAMETERS:
+
+  Summaries based on 10000 iterations using 4 chains.
+
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+
+  b0_female                          16.115      0.920     14.346     17.908      1.001   7802.323 
+  b1_female                           0.412      0.060      0.294      0.528      1.001   7421.102 
+  b0_male                            19.076      1.045     17.017     21.096      1.000   8811.626 
+  b1_male                             0.180      0.063      0.058      0.305      1.000   8501.354 
+
+                                -------------------------------------------------------------------
+
+
+PREDICTOR MODEL ESTIMATES:
+
+  Summaries based on 10000 iterations using 4 chains.
+
+
+Means Model:        dep1       
+
+    NOTE: This model is used to estimate the grand mean and latent group means needed 
+          to center outcome variables that appear as predictors in other models.
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+
+Grand Mean                            2.090      0.063      1.964      2.213      1.004   2224.070 
+
+Level 1:                                                                                           
+  Residual Var.                       1.055      0.092      0.895      1.256      1.000   9577.224 
+                                                                                                   
+                                -------------------------------------------------------------------
+
+
+
+Means Model:        dep2       
+
+    NOTE: This model is used to estimate the grand mean and latent group means needed 
+          to center outcome variables that appear as predictors in other models.
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+
+Grand Mean                            2.554      0.062      2.434      2.675      1.001   2155.728 
+
+Level 1:                                                                                           
+  Residual Var.                       1.077      0.095      0.912      1.286      1.001   9972.662 
+                                                                                                   
+                                -------------------------------------------------------------------
+
+
+
+Means Model:        dep3       
+
+    NOTE: This model is used to estimate the grand mean and latent group means needed 
+          to center outcome variables that appear as predictors in other models.
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+
+Grand Mean                            2.015      0.067      1.885      2.144      1.003   1802.744 
+
+Level 1:                                                                                           
+  Residual Var.                       1.186      0.103      1.010      1.407      1.000   9261.071 
+                                                                                                   
+                                -------------------------------------------------------------------
+
+
+
+Means Model:        dep4       
+
+    NOTE: This model is used to estimate the grand mean and latent group means needed 
+          to center outcome variables that appear as predictors in other models.
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+
+Grand Mean                            2.314      0.064      2.188      2.442      1.006   1618.842 
+
+Level 1:                                                                                           
+  Residual Var.                       1.161      0.101      0.990      1.384      1.000   9607.559 
+                                                                                                   
+                                -------------------------------------------------------------------
+
+
+
+Means Model:        dep5       
+
+    NOTE: This model is used to estimate the grand mean and latent group means needed 
+          to center outcome variables that appear as predictors in other models.
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+
+Grand Mean                            2.104      0.062      1.980      2.229      1.009   1032.035 
+
+Level 1:                                                                                           
+  Residual Var.                       1.045      0.091      0.887      1.247      1.000   9692.608 
+                                                                                                   
+                                -------------------------------------------------------------------
+
+
+
+Means Model:        dep6       
+
+    NOTE: This model is used to estimate the grand mean and latent group means needed 
+          to center outcome variables that appear as predictors in other models.
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+
+Grand Mean                            1.896      0.063      1.769      2.017      1.004    916.859 
+
+Level 1:                                                                                           
+  Residual Var.                       1.159      0.103      0.979      1.382      1.000   9201.824 
+                                                                                                   
+                                -------------------------------------------------------------------
+
+
+
+Means Model:        dep7       
+
+    NOTE: This model is used to estimate the grand mean and latent group means needed 
+          to center outcome variables that appear as predictors in other models.
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+
+Grand Mean                            1.662      0.062      1.540      1.790      1.006    512.719 
+
+Level 1:                                                                                           
+  Residual Var.                       0.998      0.088      0.846      1.189      1.001   9994.941 
+                                                                                                   
+                                -------------------------------------------------------------------
+
+

@@ -1,0 +1,238 @@
+
+---------------------------------------------------------------------------
+
+                                   Blimp
+                                  3.2.10
+
+             Blimp was developed with funding from Institute of
+           Education Sciences awards R305D150056 and R305D190002.
+
+            Craig K. Enders, P.I. Email: cenders@psych.ucla.edu
+           Brian T. Keller, Co-P.I. Email: btkeller@missouri.edu
+                 Han Du, Co-P.I. Email: hdu@psych.ucla.edu
+                 Roy Levy, Co-P.I. Email: roy.levy@asu.edu
+
+              Programming and Blimp Studio by Brian T. Keller
+
+                   There is no expressed license given.
+
+---------------------------------------------------------------------------
+
+
+ALGORITHMIC OPTIONS SPECIFIED:
+
+  Imputation method:                 Fully Bayesian model-based
+  MCMC algorithm:                    Full conditional Metropolis sampler with
+                                       Auto-Derived Conditional Distributions
+  Between-cluster imputation model:  Not applicable, single-level imputation
+  Prior for random effect variances: Not applicable, single-level imputation
+  Prior for residual variances:      Zero sum of squares, df = -2 (PRIOR2)
+  Prior for predictor variances:     Unit sum of squares, df = 2 (XPRIOR1)
+  Chain Starting Values:             Random starting values
+
+
+  NOTE: The default prior for regression coefficients 
+        in categorical models is 'normal( 0.0, 5.0)'
+
+
+BURN-IN POTENTIAL SCALE REDUCTION (PSR) OUTPUT:
+
+  NOTE: Split chain PSR is being used. This splits each chain's
+        iterations to create twice as many chains.
+
+  Comparing iterations across 4 chains     Highest PSR   Parameter #  
+                          126 to 250             1.041            12  
+                          251 to 500             1.015            17  
+                          376 to 750             1.013            17  
+                          501 to 1000            1.008            17  
+                          626 to 1250            1.011            17  
+                          751 to 1500            1.005            17  
+                          876 to 1750            1.009            17  
+                         1001 to 2000            1.006            17  
+                         1126 to 2250            1.005            17  
+                         1251 to 2500            1.005            17  
+                         1376 to 2750            1.002            18  
+                         1501 to 3000            1.003            17  
+                         1626 to 3250            1.002            10  
+                         1751 to 3500            1.003             2  
+                         1876 to 3750            1.003             2  
+                         2001 to 4000            1.002             2  
+                         2126 to 4250            1.002             3  
+                         2251 to 4500            1.002            17  
+                         2376 to 4750            1.002            17  
+                         2501 to 5000            1.002            17  
+
+
+METROPOLIS-HASTINGS ACCEPTANCE RATES:
+
+  Chain 1:
+
+    Variable                            Type    Probability   Target Value 
+    depress                       imputation          0.504          0.500 
+    depress                        parameter          0.474          0.500 
+
+  NOTE: Suppressing printing of 3 chains.
+        Use keyword 'tuneinfo' in options to override.
+
+
+DATA INFORMATION:
+
+  Sample Size:              275
+  Missing Data Rates:
+
+                    disab = 09.09
+                  depress = 13.45
+
+
+
+MODEL INFORMATION:
+
+  NUMBER OF PARAMETERS
+    Outcome Models:         8
+    Predictor Models:       2
+
+  PREDICTORS
+    Fixed variables:        male
+
+  CENTERED PREDICTORS
+    Grand Mean Centered:    depress
+
+  MODELS
+
+   focal:
+    [1]  disab ~ Intercept depress male depress*male
+
+   predictor:
+    [2]  depress ~ Intercept male
+
+
+WARNING MESSAGES:
+
+  No warning messages.
+
+
+MODEL FIT:
+
+
+  INFORMATION CRITERIA
+
+    Marginal Likelihood
+      DIC2                  3377.493
+      WAIC                  3401.671
+
+    Conditional Likelihood
+      DIC2                  3377.493
+      WAIC                  3401.671
+
+
+CORRELATIONS AMONG RESIDUALS:
+
+  Summaries based on 10000 iterations using 4 chains.
+
+
+Correlations                         Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+
+  disab, depress                     -0.000      0.086     -0.168      0.168      1.000   9938.278 
+
+                                -------------------------------------------------------------------
+
+
+
+OUTCOME MODEL ESTIMATES:
+
+  Summaries based on 10000 iterations using 4 chains.
+
+  focal block:
+
+Outcome Variable:  disab      
+
+Grand Mean Centered: depress
+
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                      17.713      1.655     14.834     21.324      1.001   6395.983 
+
+Coefficients:                   
+  Intercept                          22.077      0.389     21.314     22.838      1.001   4422.551 
+  depress                             0.405      0.063      0.283      0.529      1.001   5230.217 
+  male                               -0.350      0.557     -1.434      0.731      1.000   7061.496 
+  depress*male                       -0.224      0.093     -0.406     -0.043      1.001   5492.627 
+
+Standardized Coefficients:      
+  depress                             0.537      0.074      0.384      0.670      1.002   4953.854 
+  male                               -0.037      0.058     -0.148      0.076      1.000   7097.749 
+  depress*male                       -0.200      0.081     -0.356     -0.038      1.001   5449.779 
+
+Proportion Variance Explained   
+  by Coefficients                     0.189      0.045      0.105      0.279      1.002   4701.979 
+  by Residual Variation               0.811      0.045      0.721      0.895      1.002   4701.979 
+
+                                -------------------------------------------------------------------
+
+
+
+Conditional Effects                  Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+  depress | male @ 0                                                                               
+    Intercept                        22.077      0.389     21.314     22.838      1.001   4422.551 
+    Slope                             0.405      0.063      0.283      0.529      1.001   5230.217 
+                                                                                                   
+  depress | male @ 1                                                                               
+    Intercept                        21.727      0.426     20.895     22.559      1.001   7120.648 
+    Slope                             0.182      0.070      0.045      0.316      1.001   5066.668 
+                                                                                                   
+                                -------------------------------------------------------------------
+
+                                NOTE: Intercepts are computed by setting all predictors
+                                      not involved in the conditional effect to zero.
+
+
+  predictor block:
+
+Outcome Variable:  depress    
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                      38.432      3.538     32.321     46.198      1.000   5436.731 
+
+Coefficients:                   
+  Intercept                          14.299      0.517     13.299     15.328      1.000   5237.984 
+  male                                1.033      0.806     -0.552      2.625      1.001   5885.972 
+
+Standardized Coefficients:      
+  male                                0.081      0.063     -0.044      0.202      1.001   5887.059 
+
+Proportion Variance Explained   
+  by Coefficients                     0.007      0.011      0.000      0.041      1.001   6439.103 
+  by Residual Variation               0.993      0.011      0.959      1.000      1.001   6439.103 
+
+                                -------------------------------------------------------------------
+
+
+
+
+PREDICTOR MODEL ESTIMATES:
+
+  Summaries based on 10000 iterations using 4 chains.
+
+
+Means Model:        depress    
+
+    NOTE: This model is used to estimate the grand mean and latent group means needed 
+          to center outcome variables that appear as predictors in other models.
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+
+Grand Mean                           14.694      0.392     13.953     15.486      1.003   1586.937 
+
+Level 1:                                                                                           
+  Residual Var.                      38.045      3.493     31.946     45.483      1.001   7106.859 
+                                                                                                   
+                                -------------------------------------------------------------------
+
+

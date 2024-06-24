@@ -1,0 +1,248 @@
+
+---------------------------------------------------------------------------
+
+                                   Blimp
+                                  3.2.10
+
+             Blimp was developed with funding from Institute of
+           Education Sciences awards R305D150056 and R305D190002.
+
+            Craig K. Enders, P.I. Email: cenders@psych.ucla.edu
+           Brian T. Keller, Co-P.I. Email: btkeller@missouri.edu
+                 Han Du, Co-P.I. Email: hdu@psych.ucla.edu
+                 Roy Levy, Co-P.I. Email: roy.levy@asu.edu
+
+              Programming and Blimp Studio by Brian T. Keller
+
+                   There is no expressed license given.
+
+---------------------------------------------------------------------------
+
+
+ALGORITHMIC OPTIONS SPECIFIED:
+
+  Imputation method:                 Fully Bayesian model-based
+  MCMC algorithm:                    Full conditional Metropolis sampler with
+                                       Auto-Derived Conditional Distributions
+  Between-cluster imputation model:  Not applicable, single-level imputation
+  Prior for random effect variances: Not applicable, single-level imputation
+  Prior for residual variances:      Zero sum of squares, df = -2 (PRIOR2)
+  Prior for predictor variances:     Unit sum of squares, df = 2 (XPRIOR1)
+  Chain Starting Values:             Random starting values
+
+
+
+BURN-IN POTENTIAL SCALE REDUCTION (PSR) OUTPUT:
+
+  NOTE: Split chain PSR is being used. This splits each chain's
+        iterations to create twice as many chains.
+
+  Comparing iterations across 4 chains     Highest PSR   Parameter #  
+                           63 to 125             1.054             5  
+                          126 to 250             1.021             3  
+                          188 to 375             1.010            10  
+                          251 to 500             1.008            14  
+                          313 to 625             1.006             8  
+                          376 to 750             1.007             8  
+                          438 to 875             1.003            11  
+                          501 to 1000            1.005             1  
+                          563 to 1125            1.004            12  
+                          626 to 1250            1.003            14  
+                          688 to 1375            1.003             1  
+                          751 to 1500            1.003             7  
+                          813 to 1625            1.003            12  
+                          876 to 1750            1.002            14  
+                          938 to 1875            1.003             9  
+                         1001 to 2000            1.002             4  
+                         1063 to 2125            1.002            16  
+                         1126 to 2250            1.002            12  
+                         1188 to 2375            1.002            12  
+                         1251 to 2500            1.002            12  
+
+
+DATA INFORMATION:
+
+  Sample Size:              275
+  Missing Data Rates:
+
+                    disab = 09.09
+                  depress = 13.45
+
+
+
+MODEL INFORMATION:
+
+  NUMBER OF PARAMETERS
+    Outcome Models:         9
+    Predictor Models:       0
+
+  PREDICTORS
+    Fixed variables:        male control
+
+  MODELS
+
+   focal:
+    [1]  disab ~ Intercept depress@b1 control@b2 male@b3
+
+   predictor:
+    [2]  depress ~ Intercept control male
+
+
+WARNING MESSAGES:
+
+  No warning messages.
+
+
+MODEL FIT:
+
+
+  INFORMATION CRITERIA
+
+    Marginal Likelihood
+      DIC2                  3344.097
+      WAIC                  3368.402
+
+    Conditional Likelihood
+      DIC2                  3344.097
+      WAIC                  3368.402
+
+  WALD TESTS (Asparouhov & Muthén, 2021)
+
+  Test #1
+
+    Full:
+      [1]  disab ~ Intercept depress@b1 control@b2 male@b3
+
+    Restricted:
+      [1]  disab ~ Intercept depress@b1 control@b2 male@b3
+
+    Constraints in Restricted:
+      [1]  b1 = 0
+
+
+    Wald Statistic (Chi-Square)                28.271
+    Number of Parameters Tested (df)                1
+    Probability                                 0.000
+
+  Test #2
+
+    Full:
+      [1]  disab ~ Intercept depress@b1 control@b2 male@b3
+
+    Restricted:
+      [1]  disab ~ Intercept depress@b1 control@b2 male@b3
+
+    Constraints in Restricted:
+      [1]  b2 = 0
+
+
+    Wald Statistic (Chi-Square)                10.729
+    Number of Parameters Tested (df)                1
+    Probability                                 0.001
+
+  Test #3
+
+    Full:
+      [1]  disab ~ Intercept depress@b1 control@b2 male@b3
+
+    Restricted:
+      [1]  disab ~ Intercept depress@b1 control@b2 male@b3
+
+    Constraints in Restricted:
+      [1]  b3 = 0
+
+
+    Wald Statistic (Chi-Square)                 0.701
+    Number of Parameters Tested (df)                1
+    Probability                                 0.402
+
+  Test #4
+
+    Full:
+      [1]  disab ~ Intercept depress@b1 control@b2 male@b3
+
+    Restricted:
+      [1]  disab ~ Intercept depress@b1 control@b2 male@b3
+
+    Constraints in Restricted:
+      [1]  b1 = 0
+      [2]  b2 = 0
+      [3]  b3 = 0
+
+
+    Wald Statistic (Chi-Square)                55.802
+    Number of Parameters Tested (df)                3
+    Probability                                 0.000
+
+
+CORRELATIONS AMONG RESIDUALS:
+
+  Summaries based on 10000 iterations using 4 chains.
+
+
+Correlations                         Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+
+  disab, depress                      0.001      0.086     -0.166      0.170      1.001   9603.861 
+
+                                -------------------------------------------------------------------
+
+
+
+OUTCOME MODEL ESTIMATES:
+
+  Summaries based on 10000 iterations using 4 chains.
+
+  focal block:
+
+Outcome Variable:  disab      
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                      17.338      1.596     14.573     20.768      1.001   7139.342 
+
+Coefficients:                   
+  Intercept                          21.978      1.548     18.965     24.995      1.000   6922.092 
+  depress                             0.257      0.048      0.163      0.351      1.000   6400.560 
+  control                            -0.178      0.054     -0.283     -0.071      1.000   7121.600 
+  male                               -0.461      0.542     -1.506      0.599      1.001   8150.781 
+
+Standardized Coefficients:      
+  depress                             0.342      0.060      0.219      0.452      1.001   6285.317 
+  control                            -0.199      0.059     -0.311     -0.080      1.000   7173.699 
+  male                               -0.048      0.056     -0.155      0.063      1.001   8143.181 
+
+Proportion Variance Explained   
+  by Coefficients                     0.207      0.045      0.121      0.298      1.000   6372.151 
+  by Residual Variation               0.793      0.045      0.702      0.879      1.000   6372.151 
+
+                                -------------------------------------------------------------------
+
+
+  predictor block:
+
+Outcome Variable:  depress    
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                      34.596      3.247     28.955     41.666      1.001   7506.952 
+
+Coefficients:                   
+  Intercept                          22.470      1.574     19.369     25.526      1.000   7871.944 
+  control                            -0.390      0.072     -0.530     -0.249      1.000   7796.725 
+  male                                0.787      0.771     -0.695      2.317      1.001   7902.691 
+
+Standardized Coefficients:      
+  control                            -0.327      0.055     -0.429     -0.212      1.001   7789.083 
+  male                                0.061      0.060     -0.055      0.178      1.001   7915.869 
+
+Proportion Variance Explained   
+  by Coefficients                     0.116      0.037      0.053      0.195      1.001   7753.436 
+  by Residual Variation               0.884      0.037      0.805      0.947      1.001   7753.436 
+
+                                -------------------------------------------------------------------
+
+
+
