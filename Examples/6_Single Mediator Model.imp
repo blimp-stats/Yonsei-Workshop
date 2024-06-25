@@ -1,0 +1,42 @@
+#---------------------------------------------------#
+#
+# Blimp Script for Single Mediator Model
+# 
+#---------------------------------------------------#
+
+# Read in and set up data
+DATA: pain.dat;            # Read Data in
+VARIABLES:                 # List Variable Names
+    id txgrp male age edugroup workhrs
+    exercise pain severity anxiety stress
+    control depress interfere disab 
+    dep1:dep7 interf1:interf6 disab1:disab6;
+
+ORDINAL: severity male;    # Specify ordinal data
+MISSING: 999;              # Missing data code
+
+# Specify the single mediator model
+MODEL: 
+    # Single-Mediator model controlling for biological sex
+    disab   ~ depress@bpath  severity male;
+    depress ~ severity@apath male;
+
+    # Model for the Auxiliary Variables
+    anxiety ~ stress control disab depress severity male;
+    stress  ~        control disab depress severity male;
+    control ~                disab depress severity male;
+
+	# Specify auxiliary variable model with one line
+    # anxiety stress control ~ disab depress severity male;
+
+# Specify the single mediator model
+FIXED: male;               # Specify no distribution for male
+
+PARAMETERS:                # Post compute the mediated effect
+    indirect = apath * bpath;
+
+# Specify the MCMC sampler parameters
+SEED: 398721;              # Set a prng seed
+BURN: 1000;                # Set number of burn iterations
+ITERATIONS: 10000;         # Set number of post-burn iterations
+CHAINS: 4;                 # Specify number independent of chains

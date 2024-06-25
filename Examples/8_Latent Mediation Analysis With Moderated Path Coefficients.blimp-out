@@ -1,0 +1,1084 @@
+
+---------------------------------------------------------------------------
+
+                                   Blimp
+                                  3.2.10
+
+             Blimp was developed with funding from Institute of
+           Education Sciences awards R305D150056 and R305D190002.
+
+            Craig K. Enders, P.I. Email: cenders@psych.ucla.edu
+           Brian T. Keller, Co-P.I. Email: btkeller@missouri.edu
+                 Han Du, Co-P.I. Email: hdu@psych.ucla.edu
+                 Roy Levy, Co-P.I. Email: roy.levy@asu.edu
+
+              Programming and Blimp Studio by Brian T. Keller
+
+                   There is no expressed license given.
+
+---------------------------------------------------------------------------
+
+
+ALGORITHMIC OPTIONS SPECIFIED:
+
+  Imputation method:                 Fully Bayesian model-based
+  MCMC algorithm:                    Full conditional Metropolis sampler with
+                                       Auto-Derived Conditional Distributions
+  Between-cluster imputation model:  Not applicable, single-level imputation
+  Prior for random effect variances: Not applicable, single-level imputation
+  Prior for residual variances:      Zero sum of squares, df = -2 (PRIOR2)
+  Prior for predictor variances:     Unit sum of squares, df = 2 (XPRIOR1)
+  Chain Starting Values:             Random starting values
+
+
+  NOTE: The default prior for regression coefficients 
+        in categorical models is 'normal( 0.0, 5.0)'
+
+
+BURN-IN POTENTIAL SCALE REDUCTION (PSR) OUTPUT:
+
+  NOTE: Split chain PSR is being used. This splits each chain's
+        iterations to create twice as many chains.
+
+  Comparing iterations across 4 chains     Highest PSR   Parameter #  
+                          751 to 1500            1.749           206  
+                         1501 to 3000            1.350           172  
+                         2251 to 4500            1.353           205  
+                         3001 to 6000            1.266           206  
+                         3751 to 7500            1.071           205  
+                         4501 to 9000            1.109           206  
+                         5251 to 10500           1.070           195  
+                         6001 to 12000           1.100           206  
+                         6751 to 13500           1.078           205  
+                         7501 to 15000           1.033           217  
+                         8251 to 16500           1.055           195  
+                         9001 to 18000           1.054           216  
+                         9751 to 19500           1.033           195  
+                        10501 to 21000           1.034           179  
+                        11251 to 22500           1.051           217  
+                        12001 to 24000           1.041           179  
+                        12751 to 25500           1.068           195  
+                        13501 to 27000           1.043           195  
+                        14251 to 28500           1.048           184  
+                        15001 to 30000           1.033           184  
+
+
+METROPOLIS-HASTINGS ACCEPTANCE RATES:
+
+  Chain 1:
+
+    Variable                            Type    Probability   Target Value 
+    dep1                           threshold          0.352          0.350 
+    dep1                          imputation          0.481          0.500 
+    dep2                           threshold          0.407          0.350 
+    dep2                          imputation          0.502          0.500 
+    dep3                           threshold          0.399          0.350 
+    dep3                          imputation          0.504          0.500 
+    dep4                           threshold          0.395          0.350 
+    dep4                          imputation          0.492          0.500 
+    dep5                           threshold          0.398          0.350 
+    dep5                          imputation          0.503          0.500 
+    dep6                           threshold          0.368          0.350 
+    dep6                          imputation          0.493          0.500 
+    dep7                           threshold          0.365          0.350 
+    dep7                          imputation          0.474          0.500 
+    disab1                         threshold          0.327          0.350 
+    disab1                        imputation          0.503          0.500 
+    disab2                         threshold          0.405          0.350 
+    disab2                        imputation          0.505          0.500 
+    disab3                         threshold          0.409          0.350 
+    disab3                        imputation          0.491          0.500 
+    disab4                         threshold          0.360          0.350 
+    disab4                        imputation          0.500          0.500 
+    disab5                         threshold          0.356          0.350 
+    disab5                        imputation          0.503          0.500 
+    disab6                         threshold          0.323          0.350 
+    disab6                        imputation          0.507          0.500 
+    severity                      imputation          0.511          0.500 
+    severity                       parameter          0.467          0.500 
+
+  NOTE: Suppressing printing of 3 chains.
+        Use keyword 'tuneinfo' in options to override.
+
+
+DATA INFORMATION:
+
+  Sample Size:              275
+  Missing Data Rates:
+
+                  anxiety = 05.45
+                  control = 00.00
+                     dep1 = 04.73
+                     dep2 = 02.18
+                     dep3 = 01.82
+                     dep4 = 01.45
+                     dep5 = 02.18
+                     dep6 = 04.00
+                     dep7 = 02.91
+                   disab1 = 03.27
+                   disab2 = 04.73
+                   disab3 = 03.64
+                   disab4 = 03.64
+                   disab5 = 04.73
+                   disab6 = 03.64
+                   stress = 00.00
+                 severity = 07.27
+
+
+
+MODEL INFORMATION:
+
+  NUMBER OF PARAMETERS
+    Outcome Models:         125
+    Generated Parameters:   3
+    Predictor Models:       2
+
+  PREDICTORS
+    Fixed variables:        male
+    Incomplete ordinal:     severity
+
+  FACTORS
+    Level-1:                eta_dep eta_disab
+
+  CENTERED PREDICTORS
+    Grand Mean Centered:    severity
+
+  MODELS
+    [1]  eta_dep ~ severity@apath male severity*male@amod
+    [2]  eta_disab ~ eta_dep@bpath severity male eta_dep*male@bmod
+    [3]  anxiety ~ Intercept stress control disab1 disab2 disab3 disab4 disab5 
+                 disab6 dep1 dep2 dep3 dep4 dep5 dep6 dep7 severity 
+                 male
+    [4]  control ~ Intercept disab1 disab2 disab3 disab4 disab5 disab6 dep1 
+                 dep2 dep3 dep4 dep5 dep6 dep7 severity male
+    [5]  dep1 ~ Intercept eta_dep@1
+    [6]  dep2 ~ Intercept eta_dep
+    [7]  dep3 ~ Intercept eta_dep
+    [8]  dep4 ~ Intercept eta_dep
+    [9]  dep5 ~ Intercept eta_dep
+   [10]  dep6 ~ Intercept eta_dep
+   [11]  dep7 ~ Intercept eta_dep
+   [12]  disab1 ~ Intercept eta_disab@1
+   [13]  disab2 ~ Intercept eta_disab
+   [14]  disab3 ~ Intercept eta_disab
+   [15]  disab4 ~ Intercept eta_disab
+   [16]  disab5 ~ Intercept eta_disab
+   [17]  disab6 ~ Intercept eta_disab
+   [18]  stress ~ Intercept control disab1 disab2 disab3 disab4 disab5 disab6 
+                 dep1 dep2 dep3 dep4 dep5 dep6 dep7 severity 
+                 male
+
+  GENERATED PARAMETERS
+    [1]  indirect.female = (apath+(amod*0))*(bpath+(bmod*0))
+    [2]  indirect.male = (apath+(amod*1))*(bpath+(bmod*1))
+    [3]  indirect.diff = indirect.female-indirect.male
+
+
+WARNING MESSAGES:
+
+  WARNING: The focal predictor "eta_dep" is not centered.
+           Simple intercepts in the conditional effects table are
+           evaluated at a score of zero on the focal predictor.
+  
+
+
+MODEL FIT:
+
+
+  INFORMATION CRITERIA
+
+    Marginal Likelihood
+      DIC2                  16613.626
+      WAIC                  17424.838
+
+    Conditional Likelihood
+      DIC2                  16613.626
+      WAIC                  17424.838
+
+
+CORRELATIONS AMONG RESIDUALS:
+
+  Summaries based on 50000 iterations using 4 chains.
+
+
+Correlations                         Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+
+  eta_dep, eta_disab                  0.004      0.088     -0.169      0.175      1.000  47930.250 
+  eta_dep, anxiety                   -0.018      0.087     -0.190      0.154      1.000  39778.636 
+  eta_dep, control                   -0.000      0.088     -0.172      0.171      1.000  29839.272 
+  eta_dep, dep1                       0.004      0.086     -0.165      0.173      1.001   6694.394 
+  eta_dep, dep2                      -0.004      0.087     -0.173      0.167      1.000  47755.022 
+  eta_dep, dep3                       0.007      0.087     -0.162      0.177      1.000  45907.565 
+  eta_dep, dep4                      -0.021      0.088     -0.191      0.152      1.000  47402.848 
+  eta_dep, dep5                       0.019      0.088     -0.154      0.190      1.000  47124.300 
+  eta_dep, dep6                       0.001      0.087     -0.169      0.172      1.000  47147.422 
+  eta_dep, dep7                       0.001      0.087     -0.170      0.171      1.000  46690.319 
+  eta_dep, disab1                     0.030      0.077     -0.123      0.179      1.000   9221.527 
+  eta_dep, disab2                     0.013      0.079     -0.141      0.167      1.000  21958.033 
+  eta_dep, disab3                    -0.014      0.078     -0.169      0.137      1.000  22014.258 
+  eta_dep, disab4                     0.010      0.079     -0.144      0.163      1.000  18175.233 
+  eta_dep, disab5                     0.013      0.078     -0.142      0.165      1.000  23373.787 
+  eta_dep, disab6                    -0.031      0.077     -0.180      0.119      1.000  23516.622 
+  eta_dep, stress                     0.032      0.087     -0.140      0.199      1.000  36210.402 
+  eta_disab, anxiety                  0.008      0.088     -0.165      0.179      1.000  44142.768 
+  eta_disab, control                  0.003      0.087     -0.166      0.175      1.000  47283.837 
+  eta_disab, dep1                     0.007      0.080     -0.150      0.163      1.000  29932.052 
+  eta_disab, dep2                     0.104      0.078     -0.052      0.255      1.000  28252.659 
+  eta_disab, dep3                    -0.013      0.082     -0.172      0.148      1.000  32023.553 
+  eta_disab, dep4                     0.027      0.081     -0.132      0.183      1.000  30539.449 
+  eta_disab, dep5                    -0.024      0.082     -0.183      0.136      1.000  30957.921 
+  eta_disab, dep6                    -0.021      0.083     -0.185      0.142      1.000  30496.801 
+  eta_disab, dep7                    -0.014      0.083     -0.175      0.148      1.000  28226.776 
+  eta_disab, disab1                  -0.010      0.084     -0.174      0.154      1.001   8597.024 
+  eta_disab, disab2                  -0.002      0.084     -0.168      0.163      1.000  39620.929 
+  eta_disab, disab3                   0.027      0.085     -0.139      0.194      1.000  38390.375 
+  eta_disab, disab4                  -0.005      0.085     -0.169      0.161      1.000  35481.342 
+  eta_disab, disab5                  -0.001      0.085     -0.165      0.166      1.000  35913.202 
+  eta_disab, disab6                  -0.003      0.084     -0.167      0.161      1.000  46172.434 
+  eta_disab, stress                  -0.014      0.088     -0.187      0.156      1.000  46495.883 
+  anxiety, control                    0.000      0.088     -0.174      0.173      1.000  50425.452 
+  anxiety, dep1                       0.003      0.087     -0.167      0.173      1.000  33718.372 
+  anxiety, dep2                       0.018      0.088     -0.155      0.188      1.000  34828.965 
+  anxiety, dep3                      -0.007      0.087     -0.175      0.166      1.000  35902.870 
+  anxiety, dep4                       0.023      0.088     -0.149      0.195      1.000  34458.148 
+  anxiety, dep5                       0.009      0.087     -0.160      0.180      1.000  34701.348 
+  anxiety, dep6                      -0.007      0.087     -0.177      0.163      1.000  33886.061 
+  anxiety, dep7                      -0.030      0.086     -0.199      0.140      1.000  31223.849 
+  anxiety, disab1                     0.003      0.089     -0.171      0.176      1.000  46403.256 
+  anxiety, disab2                    -0.000      0.088     -0.173      0.171      1.000  45165.551 
+  anxiety, disab3                     0.002      0.088     -0.170      0.175      1.000  44206.791 
+  anxiety, disab4                    -0.002      0.088     -0.175      0.170      1.000  45391.434 
+  anxiety, disab5                     0.006      0.087     -0.163      0.178      1.000  44073.467 
+  anxiety, disab6                     0.004      0.089     -0.169      0.177      1.000  44109.006 
+  anxiety, stress                    -0.000      0.088     -0.172      0.172      1.000  49084.146 
+  control, dep1                      -0.002      0.088     -0.174      0.171      1.000  32783.625 
+  control, dep2                       0.015      0.088     -0.158      0.187      1.000  32656.564 
+  control, dep3                       0.002      0.088     -0.171      0.174      1.000  31027.030 
+  control, dep4                       0.020      0.088     -0.153      0.192      1.000  31669.499 
+  control, dep5                       0.001      0.089     -0.172      0.174      1.000  28516.188 
+  control, dep6                      -0.011      0.088     -0.182      0.160      1.000  30967.217 
+  control, dep7                      -0.017      0.088     -0.189      0.154      1.000  28162.232 
+  control, disab1                     0.001      0.088     -0.169      0.175      1.000  45872.558 
+  control, disab2                    -0.000      0.088     -0.173      0.169      1.000  40584.022 
+  control, disab3                     0.001      0.088     -0.172      0.173      1.000  45182.460 
+  control, disab4                     0.003      0.088     -0.169      0.175      1.000  42732.340 
+  control, disab5                     0.000      0.088     -0.171      0.171      1.000  43158.987 
+  control, disab6                    -0.000      0.089     -0.174      0.173      1.000  43444.125 
+  control, stress                    -0.000      0.088     -0.173      0.173      1.000  49821.104 
+  dep1, dep2                          0.018      0.080     -0.138      0.173      1.001  18049.624 
+  dep1, dep3                          0.026      0.082     -0.137      0.186      1.000  16859.307 
+  dep1, dep4                         -0.030      0.081     -0.188      0.129      1.001  22426.978 
+  dep1, dep5                         -0.014      0.082     -0.174      0.146      1.000  16166.393 
+  dep1, dep6                         -0.019      0.083     -0.181      0.144      1.000  18621.069 
+  dep1, dep7                          0.023      0.082     -0.139      0.181      1.000  20631.773 
+  dep1, disab1                       -0.027      0.079     -0.180      0.128      1.000  25202.826 
+  dep1, disab2                        0.036      0.078     -0.119      0.189      1.000  27173.101 
+  dep1, disab3                       -0.011      0.078     -0.163      0.142      1.000  28729.028 
+  dep1, disab4                       -0.002      0.079     -0.156      0.154      1.000  29095.229 
+  dep1, disab5                        0.003      0.079     -0.151      0.158      1.000  27838.777 
+  dep1, disab6                        0.019      0.079     -0.136      0.171      1.000  27119.280 
+  dep1, stress                        0.004      0.088     -0.170      0.174      1.000  30818.162 
+  dep2, dep3                         -0.002      0.082     -0.161      0.158      1.000  23379.280 
+  dep2, dep4                         -0.035      0.080     -0.191      0.121      1.000  23426.882 
+  dep2, dep5                         -0.023      0.081     -0.181      0.137      1.001  21582.264 
+  dep2, dep6                          0.027      0.083     -0.136      0.189      1.000  22751.947 
+  dep2, dep7                         -0.024      0.082     -0.185      0.137      1.000  23972.467 
+  dep2, disab1                        0.038      0.076     -0.114      0.185      1.000  27420.436 
+  dep2, disab2                       -0.023      0.076     -0.171      0.126      1.000  25112.465 
+  dep2, disab3                        0.025      0.077     -0.126      0.175      1.000  28459.375 
+  dep2, disab4                        0.057      0.077     -0.096      0.206      1.000  27716.351 
+  dep2, disab5                        0.075      0.076     -0.076      0.222      1.000  28491.827 
+  dep2, disab6                       -0.007      0.076     -0.156      0.140      1.000  28672.092 
+  dep2, stress                       -0.016      0.087     -0.186      0.156      1.000  35220.457 
+  dep3, dep4                          0.013      0.083     -0.151      0.174      1.000  13727.368 
+  dep3, dep5                         -0.047      0.083     -0.209      0.118      1.000  18010.404 
+  dep3, dep6                         -0.006      0.084     -0.169      0.160      1.000  14272.314 
+  dep3, dep7                          0.021      0.084     -0.145      0.184      1.001  19259.620 
+  dep3, disab1                       -0.033      0.081     -0.189      0.125      1.000  27511.872 
+  dep3, disab2                       -0.002      0.080     -0.157      0.156      1.000  28389.755 
+  dep3, disab3                       -0.005      0.081     -0.163      0.154      1.000  30194.179 
+  dep3, disab4                       -0.021      0.080     -0.179      0.135      1.000  29193.447 
+  dep3, disab5                        0.065      0.081     -0.095      0.221      1.000  28788.079 
+  dep3, disab6                       -0.025      0.080     -0.181      0.131      1.000  26941.620 
+  dep3, stress                        0.013      0.088     -0.159      0.187      1.000  33512.722 
+  dep4, dep5                          0.066      0.082     -0.098      0.225      1.000  10437.311 
+  dep4, dep6                         -0.028      0.083     -0.191      0.136      1.000  15751.172 
+  dep4, dep7                         -0.026      0.083     -0.188      0.136      1.001  21296.574 
+  dep4, disab1                       -0.026      0.079     -0.180      0.130      1.000  27859.092 
+  dep4, disab2                        0.052      0.079     -0.106      0.206      1.000  26213.217 
+  dep4, disab3                        0.014      0.080     -0.143      0.170      1.000  29370.348 
+  dep4, disab4                       -0.015      0.080     -0.171      0.142      1.000  27196.207 
+  dep4, disab5                       -0.002      0.080     -0.157      0.155      1.000  25406.634 
+  dep4, disab6                        0.033      0.079     -0.122      0.188      1.000  26751.654 
+  dep4, stress                       -0.011      0.087     -0.183      0.161      1.000  31226.151 
+  dep5, dep6                          0.019      0.085     -0.149      0.183      1.001  10766.639 
+  dep5, dep7                         -0.013      0.084     -0.179      0.149      1.000  24225.193 
+  dep5, disab1                        0.023      0.080     -0.134      0.178      1.000  28568.483 
+  dep5, disab2                       -0.028      0.080     -0.184      0.129      1.000  28279.339 
+  dep5, disab3                        0.029      0.080     -0.127      0.187      1.000  30390.926 
+  dep5, disab4                       -0.024      0.080     -0.181      0.134      1.000  29929.669 
+  dep5, disab5                       -0.025      0.080     -0.180      0.133      1.000  29786.689 
+  dep5, disab6                       -0.025      0.080     -0.180      0.132      1.000  27730.857 
+  dep5, stress                       -0.003      0.088     -0.172      0.169      1.000  33404.291 
+  dep6, dep7                          0.006      0.085     -0.159      0.170      1.000  17899.997 
+  dep6, disab1                        0.032      0.082     -0.130      0.191      1.000  28279.537 
+  dep6, disab2                       -0.005      0.082     -0.165      0.155      1.000  28014.754 
+  dep6, disab3                       -0.056      0.082     -0.215      0.105      1.000  29252.252 
+  dep6, disab4                        0.044      0.082     -0.119      0.204      1.000  26859.164 
+  dep6, disab5                       -0.065      0.082     -0.223      0.097      1.000  25726.043 
+  dep6, disab6                        0.020      0.082     -0.139      0.180      1.000  28330.730 
+  dep6, stress                        0.011      0.088     -0.163      0.185      1.000  28799.103 
+  dep7, disab1                        0.017      0.081     -0.142      0.175      1.000  27407.718 
+  dep7, disab2                       -0.019      0.081     -0.177      0.140      1.000  26036.963 
+  dep7, disab3                        0.021      0.081     -0.140      0.179      1.000  26933.502 
+  dep7, disab4                       -0.020      0.081     -0.177      0.141      1.000  27048.314 
+  dep7, disab5                       -0.007      0.082     -0.168      0.152      1.000  24530.112 
+  dep7, disab6                       -0.019      0.080     -0.176      0.139      1.000  25439.848 
+  dep7, stress                        0.014      0.087     -0.155      0.186      1.000  27270.192 
+  disab1, disab2                     -0.031      0.077     -0.182      0.120      1.001   8396.809 
+  disab1, disab3                     -0.007      0.078     -0.159      0.146      1.001   7910.137 
+  disab1, disab4                     -0.006      0.078     -0.158      0.145      1.001   6443.778 
+  disab1, disab5                      0.036      0.077     -0.118      0.184      1.001   5780.251 
+  disab1, disab6                     -0.032      0.076     -0.182      0.117      1.001  10007.985 
+  disab1, stress                     -0.004      0.088     -0.177      0.167      1.000  44739.969 
+  disab2, disab3                      0.009      0.078     -0.144      0.160      1.001   6901.989 
+  disab2, disab4                      0.050      0.078     -0.105      0.199      1.001   5514.901 
+  disab2, disab5                      0.040      0.076     -0.109      0.190      1.000   8941.911 
+  disab2, disab6                     -0.104      0.074     -0.247      0.042      1.000  15405.299 
+  disab2, stress                     -0.003      0.088     -0.175      0.170      1.000  42204.937 
+  disab3, disab4                     -0.021      0.079     -0.174      0.134      1.001   6782.814 
+  disab3, disab5                     -0.051      0.078     -0.202      0.101      1.001   9470.374 
+  disab3, disab6                      0.134      0.076     -0.019      0.277      1.001   7767.986 
+  disab3, stress                     -0.006      0.088     -0.178      0.167      1.000  43334.438 
+  disab4, disab5                     -0.011      0.078     -0.164      0.142      1.001   7336.292 
+  disab4, disab6                     -0.022      0.076     -0.170      0.128      1.001  10627.211 
+  disab4, stress                     -0.007      0.088     -0.179      0.166      1.000  44315.231 
+  disab5, disab6                     -0.017      0.076     -0.165      0.131      1.000  11069.983 
+  disab5, stress                     -0.004      0.088     -0.177      0.169      1.000  43882.830 
+  disab6, stress                      0.002      0.088     -0.170      0.174      1.000  44977.403 
+
+                                -------------------------------------------------------------------
+
+
+
+OUTCOME MODEL ESTIMATES:
+
+  Summaries based on 50000 iterations using 4 chains.
+
+
+Latent Variable:   eta_dep    
+
+Grand Mean Centered: severity
+
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       2.271      0.447      1.550      3.287      1.010    504.687 
+
+Coefficients:                   
+  severity                            0.728      0.310      0.133      1.353      1.001   4573.110 
+  male                               -0.019      0.205     -0.422      0.389      1.006   1188.509 
+  severity*male                       0.411      0.444     -0.451      1.303      1.000   9701.932 
+
+Standardized Coefficients:      
+  severity                            0.216      0.088      0.040      0.381      1.001   7849.167 
+  male                               -0.006      0.063     -0.128      0.118      1.006   1200.627 
+  severity*male                       0.085      0.089     -0.092      0.260      1.000  10815.344 
+
+Proportion Variance Explained   
+  by Coefficients                     0.087      0.033      0.032      0.161      1.000  18699.141 
+  by Residual Variation               0.913      0.033      0.839      0.968      1.000  18699.141 
+
+                                -------------------------------------------------------------------
+
+
+
+Conditional Effects                  Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+  severity | male @ 0                                                                              
+    Intercept                         0.000      0.000      0.000      0.000        nan        nan 
+    Slope                             0.728      0.310      0.133      1.353      1.001   4573.110 
+                                                                                                   
+  severity | male @ 1                                                                              
+    Intercept                        -0.019      0.205     -0.422      0.389      1.006   1188.509 
+    Slope                             1.139      0.333      0.512      1.816      1.001   4020.228 
+                                                                                                   
+                                -------------------------------------------------------------------
+
+                                NOTE: Intercepts are computed by setting all predictors
+                                      not involved in the conditional effect to zero.
+
+
+
+Latent Variable:   eta_disab  
+
+Grand Mean Centered: severity
+
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.377      0.110      0.209      0.635      1.010    430.036 
+
+Coefficients:                   
+  eta_dep                             0.284      0.064      0.178      0.427      1.004    794.283 
+  severity                            0.322      0.118      0.104      0.569      1.001   3297.325 
+  male                               -0.111      0.103     -0.319      0.087      1.002   2325.436 
+  eta_dep*male                       -0.177      0.070     -0.329     -0.052      1.001   2392.620 
+
+Standardized Coefficients:      
+  eta_dep                             0.602      0.083      0.427      0.755      1.001   5978.200 
+  severity                            0.205      0.069      0.067      0.337      1.001  12471.964 
+  male                               -0.074      0.066     -0.201      0.058      1.001   3012.477 
+  eta_dep*male                       -0.254      0.089     -0.425     -0.077      1.001   7101.066 
+
+Proportion Variance Explained   
+  by Coefficients                     0.313      0.058      0.198      0.426      1.001   8201.032 
+  by Residual Variation               0.687      0.058      0.574      0.802      1.001   8201.032 
+
+                                -------------------------------------------------------------------
+
+
+
+Conditional Effects                  Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+  severity | male @ 0                                                                              
+    Intercept                         0.000      0.000      0.000      0.000        nan        nan 
+    Slope                             0.322      0.118      0.104      0.569      1.001   3297.325 
+                                                                                                   
+  severity | male @ 1                                                                              
+    Intercept                        -0.111      0.103     -0.319      0.087      1.002   2325.436 
+    Slope                             0.322      0.118      0.104      0.569      1.001   3297.325 
+                                                                                                   
+  eta_dep | male @ 0                                                                               
+    Intercept                         0.000      0.000      0.000      0.000        nan        nan 
+    Slope                             0.284      0.064      0.178      0.427      1.004    794.283 
+                                                                                                   
+  eta_dep | male @ 1                                                                               
+    Intercept                        -0.111      0.103     -0.319      0.087      1.002   2325.436 
+    Slope                             0.105      0.052      0.013      0.217      1.002   2852.872 
+                                                                                                   
+                                -------------------------------------------------------------------
+
+                                NOTE: Intercepts are computed by setting all predictors
+                                      not involved in the conditional effect to zero.
+
+
+
+Outcome Variable:  anxiety    
+
+Grand Mean Centered: severity
+
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       9.963      0.923      8.374     11.999      1.000  38074.990 
+
+Coefficients:                   
+  Intercept                           4.668      1.615      1.513      7.830      1.000  38919.118 
+  stress                              1.374      0.134      1.114      1.639      1.000  41783.503 
+  control                            -0.079      0.042     -0.161      0.003      1.000  44577.907 
+  disab1                             -0.063      0.185     -0.425      0.300      1.000  37835.850 
+  disab2                              0.065      0.198     -0.322      0.453      1.000  35579.844 
+  disab3                              0.207      0.208     -0.203      0.614      1.000  36425.897 
+  disab4                             -0.286      0.204     -0.688      0.113      1.000  37925.153 
+  disab5                             -0.109      0.215     -0.535      0.309      1.000  33566.686 
+  disab6                              0.101      0.197     -0.286      0.488      1.000  37864.628 
+  dep1                                0.439      0.305     -0.157      1.037      1.000  42146.691 
+  dep2                                0.381      0.272     -0.154      0.914      1.000  32346.292 
+  dep3                               -0.418      0.348     -1.104      0.254      1.000  33732.520 
+  dep4                                0.090      0.327     -0.555      0.738      1.000  32330.575 
+  dep5                                0.470      0.371     -0.261      1.190      1.000  35549.816 
+  dep6                                0.194      0.386     -0.566      0.948      1.000  30143.919 
+  dep7                                0.475      0.344     -0.202      1.146      1.000  34010.760 
+  severity                           -0.728      0.486     -1.679      0.226      1.000  31378.445 
+  male                                0.356      0.429     -0.484      1.202      1.000  40796.043 
+
+Standardized Coefficients:      
+  stress                              0.520      0.045      0.429      0.604      1.000  41920.948 
+  control                            -0.087      0.046     -0.176      0.003      1.000  44583.653 
+  disab1                             -0.017      0.049     -0.113      0.080      1.000  37882.313 
+  disab2                              0.016      0.047     -0.077      0.108      1.000  35660.254 
+  disab3                              0.050      0.051     -0.049      0.148      1.000  36262.106 
+  disab4                             -0.070      0.050     -0.167      0.027      1.000  37922.702 
+  disab5                             -0.025      0.050     -0.123      0.071      1.000  33482.653 
+  disab6                              0.024      0.048     -0.069      0.118      1.000  37893.378 
+  dep1                                0.095      0.065     -0.034      0.222      1.000  42156.486 
+  dep2                                0.083      0.059     -0.034      0.198      1.000  32184.181 
+  dep3                               -0.097      0.080     -0.252      0.059      1.000  33840.993 
+  dep4                                0.020      0.074     -0.125      0.167      1.000  32246.912 
+  dep5                                0.101      0.079     -0.056      0.253      1.000  35435.588 
+  dep6                                0.043      0.086     -0.125      0.211      1.000  30161.588 
+  dep7                                0.099      0.071     -0.042      0.237      1.000  33767.494 
+  severity                           -0.071      0.047     -0.163      0.022      1.000  31581.637 
+  male                                0.037      0.044     -0.050      0.123      1.000  40634.526 
+
+Proportion Variance Explained   
+  by Coefficients                     0.561      0.034      0.489      0.623      1.000  42372.206 
+  by Residual Variation               0.439      0.034      0.377      0.511      1.000  42372.206 
+
+                                -------------------------------------------------------------------
+
+
+
+Conditional Effects                  Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+  severity | male @ 0                                                                              
+    Intercept                         4.668      1.615      1.513      7.830      1.000  38919.118 
+    Slope                            -0.728      0.486     -1.679      0.226      1.000  31378.445 
+                                                                                                   
+  severity | male @ 1                                                                              
+    Intercept                         5.035      1.613      1.850      8.179      1.000  39440.023 
+    Slope                            -0.728      0.486     -1.679      0.226      1.000  31378.445 
+                                                                                                   
+                                -------------------------------------------------------------------
+
+                                NOTE: Intercepts are computed by setting all predictors
+                                      not involved in the conditional effect to zero.
+
+
+
+Outcome Variable:  control    
+
+Grand Mean Centered: severity
+
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                      23.803      2.137     20.108     28.436      1.000  42532.401 
+
+Coefficients:                   
+  Intercept                          28.589      1.616     25.412     31.755      1.000  35900.944 
+  disab1                             -0.168      0.274     -0.710      0.364      1.000  37797.709 
+  disab2                              0.184      0.303     -0.414      0.775      1.000  36482.908 
+  disab3                              0.006      0.316     -0.609      0.627      1.000  35963.658 
+  disab4                             -0.350      0.308     -0.953      0.252      1.000  38003.494 
+  disab5                             -0.509      0.324     -1.142      0.129      1.000  35088.011 
+  disab6                             -0.493      0.298     -1.083      0.085      1.000  35010.818 
+  dep1                                0.538      0.465     -0.373      1.444      1.000  41002.545 
+  dep2                               -0.549      0.393     -1.327      0.219      1.000  44395.766 
+  dep3                               -0.884      0.510     -1.889      0.118      1.000  43141.888 
+  dep4                               -0.059      0.478     -0.992      0.889      1.000  45671.529 
+  dep5                               -0.465      0.544     -1.536      0.605      1.000  45596.694 
+  dep6                                0.215      0.560     -0.875      1.316      1.000  41248.641 
+  dep7                               -0.151      0.505     -1.138      0.838      1.000  41346.550 
+  severity                           -1.261      0.716     -2.668      0.145      1.000  40792.231 
+  male                                0.084      0.641     -1.172      1.349      1.000  46936.439 
+
+Standardized Coefficients:      
+  disab1                             -0.039      0.063     -0.162      0.084      1.000  37727.866 
+  disab2                              0.038      0.062     -0.085      0.160      1.000  36576.831 
+  disab3                              0.001      0.066     -0.127      0.131      1.000  35833.729 
+  disab4                             -0.074      0.065     -0.200      0.053      1.000  37756.011 
+  disab5                             -0.102      0.064     -0.226      0.025      1.000  34283.900 
+  disab6                             -0.104      0.062     -0.224      0.018      1.000  34660.328 
+  dep1                                0.100      0.086     -0.070      0.266      1.000  40780.013 
+  dep2                               -0.104      0.073     -0.247      0.041      1.000  44323.819 
+  dep3                               -0.176      0.100     -0.371      0.024      1.000  42922.725 
+  dep4                               -0.011      0.093     -0.193      0.173      1.000  45651.688 
+  dep5                               -0.086      0.100     -0.280      0.111      1.000  45390.318 
+  dep6                                0.042      0.108     -0.169      0.253      1.000  41180.033 
+  dep7                               -0.027      0.090     -0.202      0.150      1.000  41409.638 
+  severity                           -0.107      0.060     -0.223      0.012      1.000  40571.915 
+  male                                0.007      0.057     -0.103      0.119      1.000  46904.300 
+
+Proportion Variance Explained   
+  by Coefficients                     0.215      0.039      0.141      0.294      1.000  46219.493 
+  by Residual Variation               0.785      0.039      0.706      0.859      1.000  46219.493 
+
+                                -------------------------------------------------------------------
+
+
+
+Conditional Effects                  Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+  severity | male @ 0                                                                              
+    Intercept                        28.589      1.616     25.412     31.755      1.000  35900.944 
+    Slope                            -1.261      0.716     -2.668      0.145      1.000  40792.231 
+                                                                                                   
+  severity | male @ 1                                                                              
+    Intercept                        28.673      1.590     25.544     31.758      1.000  36881.883 
+    Slope                            -1.261      0.716     -2.668      0.145      1.000  40792.231 
+                                                                                                   
+                                -------------------------------------------------------------------
+
+                                NOTE: Intercepts are computed by setting all predictors
+                                      not involved in the conditional effect to zero.
+
+
+
+Outcome Variable:  dep1       
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.000      0.000      1.000      1.000        nan        nan 
+
+Coefficients:                   
+  Intercept                           0.631      0.161      0.310      0.947      1.004    771.867 
+  eta_dep                            @1.000        ---        ---        ---        ---        --- 
+
+Thresholds:                     
+  Tau 1                               0.000      0.000      0.000      0.000        nan        nan 
+  Tau 2                               1.479      0.149      1.205      1.783      1.005   1027.629 
+  Tau 3                               2.811      0.217      2.410      3.257      1.006    713.388 
+
+Standardized Coefficients:      
+  eta_dep                             0.841      0.021      0.795      0.878      1.012    398.846 
+
+Proportion Variance Explained   
+  by Coefficients                     0.708      0.036      0.632      0.771      1.012    398.955 
+  by Residual Variation               0.292      0.036      0.229      0.368      1.012    398.955 
+
+                                -------------------------------------------------------------------
+
+
+
+Outcome Variable:  dep2       
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.000      0.000      1.000      1.000        nan        nan 
+
+Coefficients:                   
+  Intercept                           1.392      0.151      1.105      1.701      1.012    677.162 
+  eta_dep                             0.725      0.093      0.560      0.927      1.007    663.406 
+
+Thresholds:                     
+  Tau 1                               0.000      0.000      0.000      0.000        nan        nan 
+  Tau 2                               1.430      0.134      1.180      1.699      1.007   1311.584 
+  Tau 3                               2.455      0.168      2.136      2.792      1.007   1147.373 
+
+Standardized Coefficients:      
+  eta_dep                             0.748      0.032      0.679      0.803      1.005   2027.029 
+
+Proportion Variance Explained   
+  by Coefficients                     0.560      0.047      0.461      0.645      1.005   2012.964 
+  by Residual Variation               0.440      0.047      0.355      0.539      1.005   2012.964 
+
+                                -------------------------------------------------------------------
+
+
+
+Outcome Variable:  dep3       
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.000      0.000      1.000      1.000        nan        nan 
+
+Coefficients:                   
+  Intercept                           0.424      0.210     -0.002      0.834      1.013    549.064 
+  eta_dep                             1.405      0.180      1.094      1.798      1.012    520.096 
+
+Thresholds:                     
+  Tau 1                               0.000      0.000      0.000      0.000        nan        nan 
+  Tau 2                               1.704      0.190      1.369      2.110      1.008    845.439 
+  Tau 3                               2.892      0.273      2.415      3.482      1.009    659.292 
+
+Standardized Coefficients:      
+  eta_dep                             0.909      0.016      0.874      0.935      1.009    695.401 
+
+Proportion Variance Explained   
+  by Coefficients                     0.826      0.028      0.764      0.875      1.010    691.611 
+  by Residual Variation               0.174      0.028      0.125      0.236      1.010    691.611 
+
+                                -------------------------------------------------------------------
+
+
+
+Outcome Variable:  dep4       
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.000      0.000      1.000      1.000        nan        nan 
+
+Coefficients:                   
+  Intercept                           1.233      0.201      0.853      1.640      1.010    544.370 
+  eta_dep                             1.204      0.155      0.939      1.542      1.006    510.479 
+
+Thresholds:                     
+  Tau 1                               0.000      0.000      0.000      0.000        nan        nan 
+  Tau 2                               1.767      0.180      1.443      2.145      1.011    737.653 
+  Tau 3                               3.078      0.255      2.619      3.619      1.012    646.983 
+
+Standardized Coefficients:      
+  eta_dep                             0.882      0.018      0.841      0.913      1.012    746.197 
+
+Proportion Variance Explained   
+  by Coefficients                     0.778      0.032      0.708      0.834      1.012    743.102 
+  by Residual Variation               0.222      0.032      0.166      0.292      1.012    743.102 
+
+                                -------------------------------------------------------------------
+
+
+
+Outcome Variable:  dep5       
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.000      0.000      1.000      1.000        nan        nan 
+
+Coefficients:                   
+  Intercept                           0.944      0.215      0.537      1.382      1.015    506.387 
+  eta_dep                             1.365      0.178      1.063      1.770      1.019    444.021 
+
+Thresholds:                     
+  Tau 1                               0.000      0.000      0.000      0.000        nan        nan 
+  Tau 2                               1.941      0.200      1.582      2.370      1.008    824.209 
+  Tau 3                               3.742      0.333      3.154      4.472      1.012    623.899 
+
+Standardized Coefficients:      
+  eta_dep                             0.905      0.016      0.870      0.933      1.013    663.387 
+
+Proportion Variance Explained   
+  by Coefficients                     0.818      0.029      0.756      0.871      1.013    659.846 
+  by Residual Variation               0.182      0.029      0.129      0.244      1.013    659.846 
+
+                                -------------------------------------------------------------------
+
+
+
+Outcome Variable:  dep6       
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.000      0.000      1.000      1.000        nan        nan 
+
+Coefficients:                   
+  Intercept                           0.237      0.244     -0.256      0.714      1.013    546.102 
+  eta_dep                             1.692      0.240      1.304      2.226      1.015    364.995 
+
+Thresholds:                     
+  Tau 1                               0.000      0.000      0.000      0.000        nan        nan 
+  Tau 2                               2.014      0.242      1.597      2.537      1.007    637.985 
+  Tau 3                               3.395      0.353      2.769      4.167      1.007    519.938 
+
+Standardized Coefficients:      
+  eta_dep                             0.935      0.013      0.906      0.957      1.006    463.394 
+
+Proportion Variance Explained   
+  by Coefficients                     0.874      0.024      0.820      0.915      1.006    461.421 
+  by Residual Variation               0.126      0.024      0.085      0.180      1.006    461.421 
+
+                                -------------------------------------------------------------------
+
+
+
+Outcome Variable:  dep7       
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.000      0.000      1.000      1.000        nan        nan 
+
+Coefficients:                   
+  Intercept                          -0.517      0.196     -0.917     -0.146      1.008    630.025 
+  eta_dep                             1.266      0.172      0.980      1.660      1.007    551.933 
+
+Thresholds:                     
+  Tau 1                               0.000      0.000      0.000      0.000        nan        nan 
+  Tau 2                               1.306      0.170      1.002      1.673      1.004   1507.725 
+  Tau 3                               2.577      0.273      2.079      3.149      1.005   1075.014 
+
+Standardized Coefficients:      
+  eta_dep                             0.892      0.019      0.849      0.924      1.005    822.373 
+
+Proportion Variance Explained   
+  by Coefficients                     0.795      0.034      0.721      0.854      1.005    816.965 
+  by Residual Variation               0.205      0.034      0.146      0.279      1.005    816.965 
+
+                                -------------------------------------------------------------------
+
+
+
+Outcome Variable:  disab1     
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.000      0.000      1.000      1.000        nan        nan 
+
+Coefficients:                   
+  Intercept                           1.925      0.171      1.617      2.281      1.021    250.249 
+  eta_disab                          @1.000        ---        ---        ---        ---        --- 
+
+Thresholds:                     
+  Tau 1                               0.000      0.000      0.000      0.000        nan        nan 
+  Tau 2                               0.738      0.126      0.522      1.024      1.009    400.788 
+  Tau 3                               1.700      0.158      1.422      2.044      1.017    244.116 
+  Tau 4                               2.748      0.189      2.420      3.154      1.025    201.593 
+  Tau 5                               3.753      0.232      3.341      4.238      1.029    185.859 
+
+Standardized Coefficients:      
+  eta_disab                           0.591      0.050      0.485      0.679      1.011    382.804 
+
+Proportion Variance Explained   
+  by Coefficients                     0.349      0.059      0.235      0.461      1.012    375.621 
+  by Residual Variation               0.651      0.059      0.539      0.765      1.012    375.621 
+
+                                -------------------------------------------------------------------
+
+
+
+Outcome Variable:  disab2     
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.000      0.000      1.000      1.000        nan        nan 
+
+Coefficients:                   
+  Intercept                           2.537      0.223      2.135      3.016      1.014    183.352 
+  eta_disab                           0.902      0.185      0.608      1.333      1.003    600.944 
+
+Thresholds:                     
+  Tau 1                               0.000      0.000      0.000      0.000        nan        nan 
+  Tau 2                               1.262      0.201      0.915      1.712      1.019    202.977 
+  Tau 3                               2.293      0.218      1.901      2.760      1.017    176.209 
+  Tau 4                               3.340      0.238      2.910      3.847      1.012    171.433 
+  Tau 5                               4.396      0.279      3.889      4.989      1.008    186.133 
+
+Standardized Coefficients:      
+  eta_disab                           0.552      0.054      0.436      0.649      1.000    813.196 
+
+Proportion Variance Explained   
+  by Coefficients                     0.304      0.059      0.190      0.421      1.001    791.913 
+  by Residual Variation               0.696      0.059      0.579      0.810      1.001    791.913 
+
+                                -------------------------------------------------------------------
+
+
+
+Outcome Variable:  disab3     
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.000      0.000      1.000      1.000        nan        nan 
+
+Coefficients:                   
+  Intercept                           2.403      0.203      2.027      2.822      1.019    250.720 
+  eta_disab                           1.107      0.222      0.763      1.632      1.010    407.204 
+
+Thresholds:                     
+  Tau 1                               0.000      0.000      0.000      0.000        nan        nan 
+  Tau 2                               1.108      0.169      0.804      1.468      1.011    314.110 
+  Tau 3                               2.256      0.196      1.891      2.657      1.014    251.428 
+  Tau 4                               3.358      0.225      2.933      3.814      1.018    228.252 
+  Tau 5                               4.491      0.280      3.955      5.057      1.016    240.361 
+
+Standardized Coefficients:      
+  eta_disab                           0.631      0.050      0.523      0.717      1.008    660.516 
+
+Proportion Variance Explained   
+  by Coefficients                     0.398      0.062      0.273      0.515      1.008    653.411 
+  by Residual Variation               0.602      0.062      0.485      0.727      1.008    653.411 
+
+                                -------------------------------------------------------------------
+
+
+
+Outcome Variable:  disab4     
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.000      0.000      1.000      1.000        nan        nan 
+
+Coefficients:                   
+  Intercept                           2.481      0.211      2.102      2.921      1.019    249.596 
+  eta_disab                           1.103      0.217      0.761      1.605      1.012    462.468 
+
+Thresholds:                     
+  Tau 1                               0.000      0.000      0.000      0.000        nan        nan 
+  Tau 2                               1.052      0.176      0.756      1.435      1.014    297.452 
+  Tau 3                               2.326      0.208      1.963      2.771      1.018    230.757 
+  Tau 4                               3.288      0.232      2.880      3.789      1.019    224.254 
+  Tau 5                               4.462      0.284      3.955      5.052      1.023    217.337 
+
+Standardized Coefficients:      
+  eta_disab                           0.628      0.049      0.523      0.716      1.007    664.753 
+
+Proportion Variance Explained   
+  by Coefficients                     0.395      0.061      0.274      0.512      1.007    646.567 
+  by Residual Variation               0.605      0.061      0.488      0.726      1.007    646.567 
+
+                                -------------------------------------------------------------------
+
+
+
+Outcome Variable:  disab5     
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.000      0.000      1.000      1.000        nan        nan 
+
+Coefficients:                   
+  Intercept                           2.451      0.210      2.058      2.887      1.010    263.399 
+  eta_disab                           0.975      0.187      0.666      1.400      1.007    578.683 
+
+Thresholds:                     
+  Tau 1                               0.000      0.000      0.000      0.000        nan        nan 
+  Tau 2                               1.189      0.188      0.846      1.589      1.009    311.502 
+  Tau 3                               2.420      0.209      2.031      2.848      1.011    249.078 
+  Tau 4                               3.494      0.231      3.052      3.965      1.012    238.917 
+  Tau 5                               4.580      0.286      4.051      5.155      1.010    252.693 
+
+Standardized Coefficients:      
+  eta_disab                           0.580      0.053      0.467      0.673      1.002    865.962 
+
+Proportion Variance Explained   
+  by Coefficients                     0.336      0.060      0.218      0.453      1.002    854.966 
+  by Residual Variation               0.664      0.060      0.547      0.782      1.002    854.966 
+
+                                -------------------------------------------------------------------
+
+
+
+Outcome Variable:  disab6     
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.000      0.000      1.000      1.000        nan        nan 
+
+Coefficients:                   
+  Intercept                           2.468      0.226      2.031      2.922      1.035    170.267 
+  eta_disab                           0.804      0.172      0.527      1.204      1.011    586.005 
+
+Thresholds:                     
+  Tau 1                               0.000      0.000      0.000      0.000        nan        nan 
+  Tau 2                               1.231      0.205      0.859      1.657      1.036    181.957 
+  Tau 3                               2.288      0.220      1.874      2.734      1.038    164.019 
+  Tau 4                               3.213      0.238      2.758      3.684      1.035    169.551 
+  Tau 5                               4.291      0.276      3.770      4.836      1.034    184.628 
+
+Standardized Coefficients:      
+  eta_disab                           0.508      0.058      0.387      0.613      1.006   1042.803 
+
+Proportion Variance Explained   
+  by Coefficients                     0.258      0.058      0.150      0.375      1.006   1029.280 
+  by Residual Variation               0.742      0.058      0.625      0.850      1.006   1029.280 
+
+                                -------------------------------------------------------------------
+
+
+
+Outcome Variable:  stress     
+
+Grand Mean Centered: severity
+
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       2.372      0.214      2.001      2.839      1.000  43417.366 
+
+Coefficients:                   
+  Intercept                           2.265      0.762      0.784      3.768      1.000  42028.473 
+  control                            -0.031      0.020     -0.070      0.008      1.000  49830.857 
+  disab1                              0.108      0.087     -0.062      0.280      1.000  39720.353 
+  disab2                              0.005      0.095     -0.181      0.191      1.000  39563.477 
+  disab3                              0.026      0.098     -0.166      0.219      1.000  39878.751 
+  disab4                             -0.055      0.097     -0.244      0.134      1.000  39535.112 
+  disab5                             -0.105      0.102     -0.305      0.096      1.000  37697.588 
+  disab6                              0.090      0.093     -0.093      0.274      1.000  40381.902 
+  dep1                                0.370      0.146      0.085      0.656      1.000  43414.222 
+  dep2                               -0.093      0.126     -0.338      0.155      1.000  42083.831 
+  dep3                                0.205      0.162     -0.111      0.524      1.000  39586.009 
+  dep4                                0.238      0.152     -0.061      0.536      1.000  44555.504 
+  dep5                                0.225      0.171     -0.110      0.558      1.000  44608.979 
+  dep6                                0.176      0.178     -0.172      0.524      1.000  39003.429 
+  dep7                               -0.216      0.159     -0.528      0.095      1.000  44819.014 
+  severity                            0.106      0.227     -0.338      0.550      1.000  37871.106 
+  male                                0.163      0.201     -0.232      0.560      1.000  49576.032 
+
+Standardized Coefficients:      
+  control                            -0.086      0.055     -0.194      0.022      1.000  49888.380 
+  disab1                              0.073      0.058     -0.042      0.187      1.000  39765.901 
+  disab2                              0.003      0.057     -0.109      0.115      1.000  39531.887 
+  disab3                              0.016      0.060     -0.102      0.134      1.000  39783.976 
+  disab4                             -0.034      0.060     -0.150      0.083      1.000  39509.124 
+  disab5                             -0.061      0.059     -0.177      0.056      1.000  37429.269 
+  disab6                              0.055      0.057     -0.056      0.167      1.000  40512.050 
+  dep1                                0.202      0.078      0.046      0.353      1.000  43446.859 
+  dep2                               -0.051      0.069     -0.185      0.086      1.000  42054.337 
+  dep3                                0.120      0.094     -0.065      0.303      1.000  39525.332 
+  dep4                                0.136      0.086     -0.035      0.303      1.000  44633.462 
+  dep5                                0.122      0.092     -0.059      0.299      1.000  44688.353 
+  dep6                                0.100      0.100     -0.097      0.294      1.000  38618.906 
+  dep7                               -0.114      0.083     -0.276      0.050      1.000  44917.152 
+  severity                            0.026      0.056     -0.083      0.136      1.000  37771.110 
+  male                                0.043      0.052     -0.060      0.144      1.000  49539.422 
+
+Proportion Variance Explained   
+  by Coefficients                     0.331      0.041      0.249      0.409      1.000  49670.979 
+  by Residual Variation               0.669      0.041      0.591      0.751      1.000  49670.979 
+
+                                -------------------------------------------------------------------
+
+
+
+Conditional Effects                  Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+  severity | male @ 0                                                                              
+    Intercept                         2.265      0.762      0.784      3.768      1.000  42028.473 
+    Slope                             0.106      0.227     -0.338      0.550      1.000  37871.106 
+                                                                                                   
+  severity | male @ 1                                                                              
+    Intercept                         2.427      0.760      0.946      3.928      1.000  42560.308 
+    Slope                             0.106      0.227     -0.338      0.550      1.000  37871.106 
+                                                                                                   
+                                -------------------------------------------------------------------
+
+                                NOTE: Intercepts are computed by setting all predictors
+                                      not involved in the conditional effect to zero.
+
+
+
+GENERATED PARAMETERS:
+
+  Summaries based on 50000 iterations using 4 chains.
+
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+
+  indirect.female                     0.202      0.097      0.036      0.418      1.002   3811.079 
+  indirect.male                       0.115      0.068      0.013      0.277      1.002   5594.124 
+  indirect.diff                       0.085      0.114     -0.134      0.317      1.001   9184.949 
+
+                                -------------------------------------------------------------------
+
+
+PREDICTOR MODEL ESTIMATES:
+
+  Summaries based on 50000 iterations using 4 chains.
+
+
+Missing predictor:  severity   
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+
+Grand Mean                           -0.506      0.084     -0.669     -0.342      1.001   3664.163 
+
+Level 1:                                                                                           
+  male                                0.691      0.167      0.364      1.019      1.000  14474.324 
+  Residual Var.                       1.000      0.000      1.000      1.000        nan        nan 
+Thresholds:                                                                                        
+  Tau 1                               0.000      0.000      0.000      0.000        nan        nan 
+                                                                                                   
+                                -------------------------------------------------------------------
+
+

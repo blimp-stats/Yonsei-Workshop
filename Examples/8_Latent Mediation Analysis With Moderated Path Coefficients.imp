@@ -1,0 +1,48 @@
+#---------------------------------------------------#
+#
+# Blimp Script for Latent Mediation with Moderation
+# 
+#---------------------------------------------------#
+
+## Read in and set up data
+DATA: pain.dat;            # Read Data in
+VARIABLES:                 # List Variable Names
+    id txgrp male age edugroup workhrs
+    exercise pain severity anxiety stress
+    control depress interfere disab 
+    dep1:dep7 interf1:interf6 disab1:disab6;
+
+ORDINAL: severity male dep1:dep7 disab1:disab6; # Specify ordinal data
+MISSING: 999;              # Missing data code
+LATENT: eta_dep eta_disab; # Declare latent variables
+
+# Specify the mediation with moderated paths
+MODEL: 
+	# Single-Mediator model with male moderating a and b paths
+    eta_disab  ~ eta_dep@bpath  severity male eta_dep*male@bmod;
+    eta_dep    ~ severity@apath male severity*male@amod;
+
+	# Measurement Model
+	eta_dep   -> dep1:dep7;
+	eta_disab -> disab1:disab6;
+
+    # Model for the Auxiliary Variables
+	anxiety stress control ~ disab1:disab6 dep1:dep7 severity male;
+
+FIXED: male;               # Specify no distribution for male
+
+PARAMETERS:
+	indirect.female = (apath + (amod * 0)) * (bpath + (bmod * 0));
+	indirect.male   = (apath + (amod * 1)) * (bpath + (bmod * 1));
+	indirect.diff   = indirect.female - indirect.male;
+
+CENTER: severity; # Center variables
+SIMPLE:           # Specify conditional regressions
+	severity | male;
+	eta_dep  | male;
+
+# Specify the MCMC sampler parameters
+SEED: 891723;              # Set a prng seed
+BURN: 30000;               # Set number of burn iterations
+ITERATIONS: 50000;         # Set number of post-burn iterations
+CHAINS: 4;                 # Specify number independent of chains

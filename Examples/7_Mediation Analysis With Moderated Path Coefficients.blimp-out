@@ -1,0 +1,496 @@
+
+---------------------------------------------------------------------------
+
+                                   Blimp
+                                  3.2.10
+
+             Blimp was developed with funding from Institute of
+           Education Sciences awards R305D150056 and R305D190002.
+
+            Craig K. Enders, P.I. Email: cenders@psych.ucla.edu
+           Brian T. Keller, Co-P.I. Email: btkeller@missouri.edu
+                 Han Du, Co-P.I. Email: hdu@psych.ucla.edu
+                 Roy Levy, Co-P.I. Email: roy.levy@asu.edu
+
+              Programming and Blimp Studio by Brian T. Keller
+
+                   There is no expressed license given.
+
+---------------------------------------------------------------------------
+
+
+ALGORITHMIC OPTIONS SPECIFIED:
+
+  Imputation method:                 Fully Bayesian model-based
+  MCMC algorithm:                    Full conditional Metropolis sampler with
+                                       Auto-Derived Conditional Distributions
+  Between-cluster imputation model:  Not applicable, single-level imputation
+  Prior for random effect variances: Not applicable, single-level imputation
+  Prior for residual variances:      Zero sum of squares, df = -2 (PRIOR2)
+  Prior for predictor variances:     Unit sum of squares, df = 2 (XPRIOR1)
+  Chain Starting Values:             Random starting values
+
+
+  NOTE: The default prior for regression coefficients 
+        in categorical models is 'normal( 0.0, 5.0)'
+
+
+BURN-IN POTENTIAL SCALE REDUCTION (PSR) OUTPUT:
+
+  NOTE: Split chain PSR is being used. This splits each chain's
+        iterations to create twice as many chains.
+
+  Comparing iterations across 4 chains     Highest PSR   Parameter #  
+                           26 to 50              1.662            72  
+                           51 to 100             1.276            68  
+                           76 to 150             1.091            68  
+                          101 to 200             1.107            72  
+                          126 to 250             1.086            69  
+                          151 to 300             1.059            68  
+                          176 to 350             1.034            68  
+                          201 to 400             1.072            68  
+                          226 to 450             1.036            68  
+                          251 to 500             1.047            68  
+                          276 to 550             1.048            68  
+                          301 to 600             1.046            68  
+                          326 to 650             1.022            68  
+                          351 to 700             1.014            41  
+                          376 to 750             1.028            72  
+                          401 to 800             1.031            68  
+                          426 to 850             1.038            68  
+                          451 to 900             1.013            68  
+                          476 to 950             1.012            60  
+                          501 to 1000            1.016            68  
+
+
+METROPOLIS-HASTINGS ACCEPTANCE RATES:
+
+  Chain 1:
+
+    Variable                            Type    Probability   Target Value 
+    depress                       imputation          0.490          0.500 
+    severity                      imputation          0.491          0.500 
+    severity                       parameter          0.535          0.500 
+    depress                        parameter          0.469          0.500 
+
+  NOTE: Suppressing printing of 3 chains.
+        Use keyword 'tuneinfo' in options to override.
+
+
+DATA INFORMATION:
+
+  Sample Size:              275
+  Missing Data Rates:
+
+                  anxiety = 05.45
+                  control = 00.00
+                  depress = 13.45
+                    disab = 09.09
+                   stress = 00.00
+                 severity = 07.27
+
+
+
+MODEL INFORMATION:
+
+  NUMBER OF PARAMETERS
+    Outcome Models:         32
+    Generated Parameters:   3
+    Predictor Models:       4
+
+  PREDICTORS
+    Fixed variables:        male
+    Incomplete ordinal:     severity
+
+  CENTERED PREDICTORS
+    Grand Mean Centered:    severity depress
+
+  MODELS
+    [1]  anxiety ~ Intercept stress control disab depress severity male
+    [2]  control ~ Intercept disab depress severity male
+    [3]  depress ~ Intercept severity@apath male severity*male@amod
+    [4]  disab ~ Intercept depress@bpath severity male depress*male@bmod
+    [5]  stress ~ Intercept control disab depress severity male
+
+  GENERATED PARAMETERS
+    [1]  indirect.female = (apath+(amod*0))*(bpath+(bmod*0))
+    [2]  indirect.male = (apath+(amod*1))*(bpath+(bmod*1))
+    [3]  indirect.diff = indirect.female-indirect.male
+
+
+WARNING MESSAGES:
+
+  No warning messages.
+
+
+MODEL FIT:
+
+
+  INFORMATION CRITERIA
+
+    Marginal Likelihood
+      DIC2                  7468.167
+      WAIC                  7501.275
+
+    Conditional Likelihood
+      DIC2                  7468.167
+      WAIC                  7501.275
+
+
+CORRELATIONS AMONG RESIDUALS:
+
+  Summaries based on 10000 iterations using 4 chains.
+
+
+Correlations                         Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+
+  anxiety, control                   -0.001      0.086     -0.167      0.166      1.000  10110.695 
+  anxiety, depress                   -0.001      0.085     -0.169      0.163      1.000   9843.940 
+  anxiety, disab                      0.003      0.085     -0.159      0.171      1.000  10207.121 
+  anxiety, stress                    -0.001      0.086     -0.169      0.166      1.000  10292.635 
+  control, depress                    0.002      0.086     -0.168      0.166      1.000   9420.099 
+  control, disab                     -0.001      0.085     -0.168      0.168      1.001   9940.808 
+  control, stress                    -0.001      0.086     -0.167      0.172      1.001  10068.126 
+  depress, disab                      0.008      0.087     -0.163      0.172      1.000  10034.385 
+  depress, stress                     0.006      0.087     -0.163      0.173      1.000   8843.542 
+  disab, stress                      -0.007      0.085     -0.174      0.161      1.001   9994.957 
+
+                                -------------------------------------------------------------------
+
+
+
+OUTCOME MODEL ESTIMATES:
+
+  Summaries based on 10000 iterations using 4 chains.
+
+
+Outcome Variable:  anxiety    
+
+Grand Mean Centered: depress severity
+
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       9.861      0.920      8.296     11.918      1.001   8044.319 
+
+Coefficients:                   
+  Intercept                           7.432      1.616      4.272     10.663      1.000   7607.865 
+  stress                              1.404      0.131      1.149      1.665      1.001   6922.260 
+  control                            -0.063      0.041     -0.145      0.015      1.001   8257.602 
+  disab                              -0.002      0.050     -0.102      0.096      1.001   6855.196 
+  depress                             0.206      0.043      0.121      0.290      1.001   4674.635 
+  severity                           -0.729      0.483     -1.672      0.209      1.001   5725.467 
+  male                                0.261      0.425     -0.561      1.089      1.001   8458.060 
+
+Standardized Coefficients:      
+  stress                              0.542      0.044      0.452      0.622      1.001   6577.415 
+  control                            -0.071      0.046     -0.161      0.017      1.001   8228.485 
+  disab                              -0.002      0.049     -0.100      0.095      1.001   6873.091 
+  depress                             0.276      0.057      0.161      0.386      1.002   4158.476 
+  severity                           -0.073      0.048     -0.164      0.021      1.001   5709.103 
+  male                                0.027      0.044     -0.059      0.114      1.001   8434.736 
+
+Proportion Variance Explained   
+  by Coefficients                     0.549      0.036      0.473      0.614      1.001   8208.753 
+  by Residual Variation               0.451      0.036      0.386      0.527      1.001   8208.753 
+
+                                -------------------------------------------------------------------
+
+
+
+Conditional Effects                  Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+  severity | male @ 0                                                                              
+    Intercept                         7.432      1.616      4.272     10.663      1.000   7607.865 
+    Slope                            -0.729      0.483     -1.672      0.209      1.001   5725.467 
+                                                                                                   
+  severity | male @ 1                                                                              
+    Intercept                         7.705      1.604      4.584     10.898      1.000   7910.615 
+    Slope                            -0.729      0.483     -1.672      0.209      1.001   5725.467 
+                                                                                                   
+  depress | male @ 0                                                                               
+    Intercept                         7.432      1.616      4.272     10.663      1.000   7607.865 
+    Slope                             0.206      0.043      0.121      0.290      1.001   4674.635 
+                                                                                                   
+  depress | male @ 1                                                                               
+    Intercept                         7.705      1.604      4.584     10.898      1.000   7910.615 
+    Slope                             0.206      0.043      0.121      0.290      1.001   4674.635 
+                                                                                                   
+                                -------------------------------------------------------------------
+
+                                NOTE: Intercepts are computed by setting all predictors
+                                      not involved in the conditional effect to zero.
+
+
+
+Outcome Variable:  control    
+
+Grand Mean Centered: depress severity
+
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                      23.352      2.049     19.777     27.848      1.000   8662.859 
+
+Coefficients:                   
+  Intercept                          25.428      1.687     22.119     28.721      1.001   8313.899 
+  disab                              -0.210      0.074     -0.354     -0.065      1.001   8329.500 
+  depress                            -0.212      0.054     -0.316     -0.105      1.000   7077.120 
+  severity                           -1.153      0.701     -2.487      0.243      1.001   7813.550 
+  male                               -0.158      0.637     -1.405      1.107      1.000   9208.731 
+
+Standardized Coefficients:      
+  disab                              -0.183      0.063     -0.302     -0.056      1.001   8213.355 
+  depress                            -0.250      0.062     -0.366     -0.124      1.000   6574.422 
+  severity                           -0.101      0.061     -0.212      0.021      1.001   7767.403 
+  male                               -0.015      0.058     -0.128      0.101      1.000   9143.562 
+
+Proportion Variance Explained   
+  by Coefficients                     0.176      0.040      0.103      0.258      1.000   8887.265 
+  by Residual Variation               0.824      0.040      0.742      0.897      1.000   8887.265 
+
+                                -------------------------------------------------------------------
+
+
+
+Conditional Effects                  Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+  severity | male @ 0                                                                              
+    Intercept                        25.428      1.687     22.119     28.721      1.001   8313.899 
+    Slope                            -1.153      0.701     -2.487      0.243      1.001   7813.550 
+                                                                                                   
+  severity | male @ 1                                                                              
+    Intercept                        25.280      1.661     22.051     28.531      1.000   8329.257 
+    Slope                            -1.153      0.701     -2.487      0.243      1.001   7813.550 
+                                                                                                   
+  depress | male @ 0                                                                               
+    Intercept                        25.428      1.687     22.119     28.721      1.001   8313.899 
+    Slope                            -0.212      0.054     -0.316     -0.105      1.000   7077.120 
+                                                                                                   
+  depress | male @ 1                                                                               
+    Intercept                        25.280      1.661     22.051     28.531      1.000   8329.257 
+    Slope                            -0.212      0.054     -0.316     -0.105      1.000   7077.120 
+                                                                                                   
+                                -------------------------------------------------------------------
+
+                                NOTE: Intercepts are computed by setting all predictors
+                                      not involved in the conditional effect to zero.
+
+
+
+Outcome Variable:  depress    
+
+Grand Mean Centered: severity
+
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                      37.079      3.482     31.162     44.782      1.001   5523.112 
+
+Coefficients:                   
+  Intercept                          14.663      0.516     13.650     15.683      1.001   5229.669 
+  severity                            2.455      1.239     -0.007      4.851      1.001   5708.171 
+  male                                0.069      0.815     -1.530      1.656      1.000   5885.443 
+  severity*male                       2.056      1.762     -1.402      5.486      1.001   5960.937 
+
+Standardized Coefficients:      
+  severity                            0.180      0.089     -0.000      0.349      1.001   5745.221 
+  male                                0.005      0.062     -0.118      0.127      1.000   5892.789 
+  severity*male                       0.105      0.089     -0.071      0.276      1.001   5931.919 
+
+Proportion Variance Explained   
+  by Coefficients                     0.078      0.031      0.028      0.149      1.001   6228.326 
+  by Residual Variation               0.922      0.031      0.851      0.972      1.001   6228.326 
+
+                                -------------------------------------------------------------------
+
+
+
+Conditional Effects                  Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+  severity | male @ 0                                                                              
+    Intercept                        14.663      0.516     13.650     15.683      1.001   5229.669 
+    Slope                             2.455      1.239     -0.007      4.851      1.001   5708.171 
+                                                                                                   
+  severity | male @ 1                                                                              
+    Intercept                        14.724      0.644     13.441     15.996      1.001   6223.540 
+    Slope                             4.508      1.255      2.053      6.968      1.000   5993.635 
+                                                                                                   
+                                -------------------------------------------------------------------
+
+                                NOTE: Intercepts are computed by setting all predictors
+                                      not involved in the conditional effect to zero.
+
+
+
+Outcome Variable:  disab      
+
+Grand Mean Centered: depress severity
+
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                      17.100      1.606     14.402     20.663      1.001   6400.632 
+
+Coefficients:                   
+  Intercept                          22.258      0.385     21.498     22.998      1.002   3252.435 
+  depress                             0.377      0.063      0.254      0.503      1.001   4830.560 
+  severity                            1.882      0.618      0.654      3.084      1.001   5891.300 
+  male                               -0.796      0.569     -1.913      0.334      1.000   6991.692 
+  depress*male                       -0.227      0.091     -0.404     -0.048      1.000   5675.710 
+
+Standardized Coefficients:      
+  depress                             0.504      0.076      0.349      0.647      1.001   4651.139 
+  severity                            0.187      0.060      0.066      0.299      1.001   5877.502 
+  male                               -0.083      0.059     -0.196      0.034      1.000   7028.855 
+  depress*male                       -0.207      0.081     -0.361     -0.044      1.000   5658.274 
+
+Proportion Variance Explained   
+  by Coefficients                     0.224      0.045      0.140      0.315      1.001   5072.303 
+  by Residual Variation               0.776      0.045      0.685      0.860      1.001   5072.303 
+
+                                -------------------------------------------------------------------
+
+
+
+Conditional Effects                  Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+  severity | male @ 0                                                                              
+    Intercept                        22.258      0.385     21.498     22.998      1.002   3252.435 
+    Slope                             1.882      0.618      0.654      3.084      1.001   5891.300 
+                                                                                                   
+  severity | male @ 1                                                                              
+    Intercept                        21.465      0.432     20.613     22.304      1.001   6448.296 
+    Slope                             1.882      0.618      0.654      3.084      1.001   5891.300 
+                                                                                                   
+  depress | male @ 0                                                                               
+    Intercept                        22.258      0.385     21.498     22.998      1.002   3252.435 
+    Slope                             0.377      0.063      0.254      0.503      1.001   4830.560 
+                                                                                                   
+  depress | male @ 1                                                                               
+    Intercept                        21.465      0.432     20.613     22.304      1.001   6448.296 
+    Slope                             0.152      0.066      0.021      0.284      1.001   6718.457 
+                                                                                                   
+                                -------------------------------------------------------------------
+
+                                NOTE: Intercepts are computed by setting all predictors
+                                      not involved in the conditional effect to zero.
+
+
+
+Outcome Variable:  stress     
+
+Grand Mean Centered: depress severity
+
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       2.454      0.218      2.072      2.925      1.001   7769.628 
+
+Coefficients:                   
+  Intercept                           4.138      0.759      2.667      5.640      1.001   6554.759 
+  control                            -0.025      0.020     -0.065      0.014      1.001   7168.926 
+  disab                               0.010      0.025     -0.039      0.058      1.001   6694.150 
+  depress                             0.131      0.018      0.095      0.166      1.000   6143.849 
+  severity                            0.146      0.231     -0.306      0.611      1.000   6050.864 
+  male                                0.154      0.204     -0.250      0.554      1.000   9013.263 
+
+Standardized Coefficients:      
+  control                            -0.071      0.057     -0.182      0.041      1.001   7060.875 
+  disab                               0.025      0.062     -0.098      0.146      1.001   6725.662 
+  depress                             0.450      0.057      0.331      0.553      1.000   5618.560 
+  severity                            0.037      0.059     -0.078      0.154      1.000   6026.961 
+  male                                0.041      0.054     -0.066      0.148      1.000   9019.209 
+
+Proportion Variance Explained   
+  by Coefficients                     0.269      0.043      0.185      0.352      1.000   6659.340 
+  by Residual Variation               0.731      0.043      0.648      0.815      1.000   6659.340 
+
+                                -------------------------------------------------------------------
+
+
+
+Conditional Effects                  Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+  severity | male @ 0                                                                              
+    Intercept                         4.138      0.759      2.667      5.640      1.001   6554.759 
+    Slope                             0.146      0.231     -0.306      0.611      1.000   6050.864 
+                                                                                                   
+  severity | male @ 1                                                                              
+    Intercept                         4.293      0.750      2.826      5.770      1.000   6778.362 
+    Slope                             0.146      0.231     -0.306      0.611      1.000   6050.864 
+                                                                                                   
+  depress | male @ 0                                                                               
+    Intercept                         4.138      0.759      2.667      5.640      1.001   6554.759 
+    Slope                             0.131      0.018      0.095      0.166      1.000   6143.849 
+                                                                                                   
+  depress | male @ 1                                                                               
+    Intercept                         4.293      0.750      2.826      5.770      1.000   6778.362 
+    Slope                             0.131      0.018      0.095      0.166      1.000   6143.849 
+                                                                                                   
+                                -------------------------------------------------------------------
+
+                                NOTE: Intercepts are computed by setting all predictors
+                                      not involved in the conditional effect to zero.
+
+
+
+GENERATED PARAMETERS:
+
+  Summaries based on 10000 iterations using 4 chains.
+
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+
+  indirect.female                     0.908      0.493     -0.003      1.942      1.000   6215.460 
+  indirect.male                       0.651      0.362      0.079      1.499      1.001   6592.075 
+  indirect.diff                       0.239      0.609     -0.943      1.444      1.001   6299.946 
+
+                                -------------------------------------------------------------------
+
+
+PREDICTOR MODEL ESTIMATES:
+
+  Summaries based on 10000 iterations using 4 chains.
+
+
+Missing predictor:  severity   
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+
+Grand Mean                           -0.499      0.084     -0.663     -0.335      1.005    940.541 
+
+Level 1:                                                                                           
+  male                                0.684      0.166      0.362      1.015      1.001   2878.700 
+  Residual Var.                       1.000      0.000      1.000      1.000        nan        nan 
+Thresholds:                                                                                        
+  Tau 1                               0.000      0.000      0.000      0.000        nan        nan 
+                                                                                                   
+                                -------------------------------------------------------------------
+
+
+
+Means Model:        depress    
+
+    NOTE: This model is used to estimate the grand mean and latent group means needed 
+          to center outcome variables that appear as predictors in other models.
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+
+Grand Mean                           14.797      0.397     14.019     15.581      1.007   1018.031 
+
+Level 1:                                                                                           
+  Residual Var.                      39.097      3.658     32.879     46.959      1.000   5315.565 
+                                                                                                   
+                                -------------------------------------------------------------------
+
+

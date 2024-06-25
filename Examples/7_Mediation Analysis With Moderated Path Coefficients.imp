@@ -1,0 +1,44 @@
+#---------------------------------------------------#
+#
+# Blimp Script for Mediation with Moderated Paths
+# 
+#---------------------------------------------------#
+
+## Read in and set up data
+DATA: pain.dat;            # Read Data in
+VARIABLES:                 # List Variable Names
+    id txgrp male age edugroup workhrs
+    exercise pain severity anxiety stress
+    control depress interfere disab 
+    dep1:dep7 interf1:interf6 disab1:disab6;
+
+ORDINAL: severity male;    # Specify ordinal data
+MISSING: 999;              # Missing data code
+# Specify the mediation with moderated paths
+MODEL: 
+	# Single-Mediator model with male moderating a and b paths
+	disab   ~ depress@bpath  severity male depress*male@bmod;
+	depress ~ severity@apath male severity*male@amod;
+
+	# Specify auxiliary variable model with one line
+	anxiety stress control ~ disab depress severity male;
+
+FIXED: male;               # Specify no distribution for male
+
+PARAMETERS:
+	indirect.female = (apath + (amod * 0)) * (bpath + (bmod * 0));
+	indirect.male   = (apath + (amod * 1)) * (bpath + (bmod * 1));
+	indirect.diff   = indirect.female - indirect.male;
+
+# Specify Simple command to obtain
+#   conditional regressions 
+CENTER: severity depress; # Center variables
+SIMPLE: 
+	severity | male;
+	depress  | male;
+
+
+SEED: 518722;
+BURN: 1000;
+ITERATIONS: 10000;
+CHAINS: 4;
